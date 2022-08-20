@@ -87,19 +87,70 @@
         });
     </script>
 
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
     {% if property.showMap == true and property.latitude != '' and property.longitude != '' %}
 
-        {% if site.ymaps_key != '' %}
 
-            <script src="https://api-maps.yandex.ru/2.1/?apikey={{ site.ymaps_key }}&lang={{ app.request.locale }}"></script>
+            {% if site.ymaps_key != '' %}
 
-        {% else %}
+                <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&v=weekly&key={{ site.ymaps_key }}&language={{ app.request.locale }}" async defer></script>
 
-            <script src="https://api-maps.yandex.ru/2.1/?lang={{ app.request.locale }}"></script>
+            {% else %}
 
-        {% endif %}
+            <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&language={{ app.request.locale }}&region=ES"
+            defer
+            ></script>
 
-        {{ encore_entry_script_tags('js/map') }}
+            {% endif %}
+
+            <script> 
+            const $map = $('#map');
+const latitude = $map.attr('data-latitude');
+const longitude = $map.attr('data-longitude');
+const hintContent = $map.attr('data-hintContent');
+const balloonContent = $map.attr('data-balloonContent');
+
+function initMap() {
+    // Creating the map.
+
+    let map_center = { lat: {{property.latitude}}, lng:  {{property.longitude}}};
+    let infoWindow = new google.maps.InfoWindow();
+    let map = new google.maps.Map(
+        document.getElementById("map"), 
+        {
+            zoom: 4,
+            center: map_center,
+        });
+
+
+    
+        let marcador =  new google.maps.Marker({
+                position: map_center,
+                map,
+                title: balloonContent,
+                    labels: balloonContent,
+
+            });
+
+
+        marcador.addListener("click", () => {
+        infoWindow.close();
+        infoWindow.setContent(marcador.getTitle());
+        infoWindow.open(marcador.getMap(), marcador);
+        });
+
+}
+
+$map.css({
+    width: '100%',
+    height: '280px',
+    'padding-top': '20px'
+});
+            
+            </script>
 
     {% endif %}
 

@@ -1,0 +1,1 @@
+(self.webpackChunk=self.webpackChunk||[]).push([[655],{434:()=>{const t=$("#map");t.attr("data-latitude"),t.attr("data-longitude"),t.attr("data-hintContent"),t.attr("data-balloonContent");t.css({width:"100%",height:"280px","padding-top":"20px"})}},t=>{var a;a=434,t(t.s=a)}]);

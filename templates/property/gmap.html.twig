@@ -14,37 +14,71 @@
 
     {% endif %}
 
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
     {% if site.ymaps_key != '' %}
 
-        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={{ site.ymaps_key }}&lang={{ app.request.locale }}" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&v=weekly&key={{ site.ymaps_key }}&language={{ app.request.locale }}" async defer></script>
 
     {% else %}
 
-        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&lang={{ app.request.locale }}"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&language={{ app.request.locale }}&region=ES"
+      defer
+    ></script>
 
     {% endif %}
 
+    
     <script>
 
-        function initMap() {
-
-
             function initMap() {
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: {{ site.map_zoom|default('7') }},
-                    center:  [{{ site.map_center|default('27.188534, -81.128735') }}],,
-                });
 
-                new google.maps.Marker({
-                    position:  [{{ site.map_center|default('27.188534, -81.128735') }}],,
-                    map,
-                    title: "Hello World!",
-                });
+
+                    const map_center = { lat: {{site.map_center|split(',')[0] }}, lng:  {{site.map_center|split(',')[1] }} };
+
+                    const infoWindow = new google.maps.InfoWindow();
+
+                    const map = new google.maps.Map(
+                        document.getElementById("map"), 
+                        {
+                            zoom: {{ site.map_zoom|default('7') }},
+                            center: map_center,
+                        });
+
+                          
+                        let inmuebles = [];
+
+                        {% for property in properties %}
+
+                                inmuebles.push([
+                                    { lat: {{ property.latitude }}, lng:  {{property.longitude }} },
+                                    
+                                      "{{ property.propertyDescription.title }} {{ site.currency.symbolRight }}",
+                                ])
+
+                        {% endfor %}
+
+                        inmuebles.forEach(([position, title], i) => {
+                            const marker = new google.maps.Marker({
+                            position,
+                            map,
+                            title: `${i + 1}. ${title}`,
+                            label: `${i + 1}`,
+                            optimized: false,
+                            });
+
+                            // Add a click listener for each marker, and set up the info window.
+                            marker.addListener("click", () => {
+                            infoWindow.close();
+                            infoWindow.setContent(marker.getTitle());
+                            infoWindow.open(marker.getMap(), marker);
+                            });
+                        });
+
+
+
                 }
-
-                window.initMap = initMap;
-
-        }
 
     </script>
 

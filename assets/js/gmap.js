@@ -1,5 +1,3 @@
-/** global: ymaps */
-ymaps.ready(init_map);
 
 const $map = $('#map');
 const latitude = $map.attr('data-latitude');
@@ -7,25 +5,40 @@ const longitude = $map.attr('data-longitude');
 const hintContent = $map.attr('data-hintContent');
 const balloonContent = $map.attr('data-balloonContent');
 
-function init_map() {
+function initMap() {
     // Creating the map.
-    let myMap = new ymaps.Map('map', {
-        center: [latitude, longitude],
-        zoom: 13
-    });
 
-    let currentApartment = new ymaps.Placemark(
-        [latitude, longitude],
-        {
-            hintContent: hintContent,
-            balloonContent: balloonContent
-        },
-        {
-            preset: 'islands#blueHomeIcon'
-        }
-    );
 
-    myMap.geoObjects.add(currentApartment);
+    const map_center = { lat: latitude, lng:  longitude};
+
+
+    const infoWindow = new google.maps.InfoWindow();
+
+
+
+         let map = new google.maps.Map(
+        document.getElementById("map"), 
+        {
+            zoom: 13,
+            center: map_center,
+        });
+
+
+        let marker = new google.maps.Marker({
+            map_center,
+            map,
+            title: balloonContent,
+            label: balloonContent,
+            optimized: false,
+            });
+
+            // Add a click listener for each marker, and set up the info window.
+            marker.addListener("click", () => {
+            infoWindow.close();
+            infoWindow.setContent(marker.getTitle());
+            infoWindow.open(marker.getMap(), marker);
+            });
+
 }
 
 $map.css({

@@ -39,7 +39,7 @@ final class PropertyController extends BaseController
      */
     public function mapView(Request $request, PropertyRepository $repository): Response
     {
-        return $this->render('property/map.html.twig',
+        return $this->render('property/gmap.html.twig',
             [
                 'site' => $this->site($request),
                 'properties' => $repository->findAllPublished(),
