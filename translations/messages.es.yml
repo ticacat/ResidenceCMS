@@ -1,0 +1,272 @@
+menu.back: Atrás
+menu.homepage: Inicio
+menu.catalog: Catálogo
+menu.add_new: Nuevo
+menu.settings: Ajustes
+menu.my_properties: Mis propiedades
+menu.unpublished: Sin Publicar
+menu.admin: Admin
+menu.account: Cuenta
+menu.edit_profile: Editae perfil
+menu.login: Iniciar Session
+menu.register: Registrar
+menu.profile: Mi Perfil
+menu.password: Cambiar Contraseña
+menu.logout: Salir
+'yes': Si
+no_items_found: No Hay items.
+view_details: Ver detalles
+show_on_map: Mostrar en Mapa
+dashboard: Panel
+properties: Propiedades
+locations: Ubicaciones
+cities: Localidades
+neighborhoods: Barrios
+districts: Distritos
+metro_stations: Paradas
+deal_types: Tipo operación
+categories: Categorias
+features: Características
+currencies: Moneda
+pages: Páginas
+users: Usuarios
+menu: Menu
+property: Propiedad
+city: Ciudad
+neighborhood: Bario
+district: Distrito
+metro_station: Estación
+deal_type: Tipo Operación
+category: Categoria
+feature: Característica
+page: Página
+user: Usuario
+photo: Foto
+message.created: Creado Correctamente
+message.updated: Actualizado Correctamente
+message.deleted: Borrado Correctamente
+message.uploaded: Foto subida Correctamente
+message.was_sent: Su mensage ha sido enviado cirrectamente. Gracias.
+message.registration_suspended: El registro de usuarios ha sido suspendido temporalmente.
+message.token_expired: Sentimos, Su clave token ha caducado. Por Favor intente de nuevo.
+message.password_has_been_reset: La contraseña ha sido cambiada con éxito. Ahora puede iniciar sesión con una nueva contraseña.
+message.emailed_reset_link: ¡Le hemos enviado por correo electrónico su enlace de restablecimiento de contraseña!
+message.email_verified: Tu dirección de email ha sido verificada.
+message.confirm_email: Para utilizar su cuenta, debe confirmar su dirección de correo electrónico. Revisa tu correo electrónico y localiza el correo electrónico de confirmación. Siga los pasos en el correo electrónico para confirmar su dirección de correo electrónico.
+widget.contact_information: Información del contacto
+widget.agent: Agente
+widget.phone: Teléfono
+widget.email: Email
+widget.search: Buscar
+widget.all_cities: Todas Las localidades
+widget.all_deal_types: Todas las operaciones
+widget.all_categories: Todas las categorias
+widget.all_features: Todas las caracterìsticas
+action.search: Buscar
+action.save: Guardar Cambios
+action.edit: Editar
+action.finish_editing: Terminar de editar
+action.edit_photos: Editar fotos
+action.reorder_photos: Reordenar fotos
+action.save_reordering: Guardar reorden
+action.delete: Borrar
+action.sign_in: Iniciar Session
+action.register: Crear cuenta
+action.forgot_password: ¿Olvidaste tu contraseña?
+action.send_reset_link: Enviar enlace de restablecimiento de contraseña
+action.add_menu_item: Agregar elemento de menú
+action.submit: Enviar
+action.continue: Continuar
+action.publish: Publicar
+action.unpublish: Despublicar
+action.cancel: Cancelar
+table.link_text: Texto del enlace
+table.url: URL
+table.move: Mover
+table.city_name: Nombre de ciudad
+table.deal_type: Tipo de operación
+table.category_name: Nombre de la categoría
+table.currency_title: Título de moneda
+table.code: Code
+table.username: Usuario
+table.email: Email
+table.slug: Slug
+table.action: Acción
+confirmation.delete_item: ¿Estás seguro de que quieres eliminar este elemento?
+confirmation.delete_photo: ¿Estás seguro de que quieres eliminar esta foto?
+confirmation.delete_user: ¿Está seguro de que desea eliminar este usuario?
+title.my_profile: Mi perfil
+title.my_properties: Mis propiedades
+title.properties_on_map: Todas las propiedades en el mapa
+title.login: Inicio de sesión seguro
+title.register: Registrar
+title.reset_password: Restablecer la contraseña
+title.set_new_pass: Establecer una nueva contraseña
+title.pages: Paginas
+title.latest_properties: Últimas propiedades
+title.add_page: Añadir página
+title.edit_page: Editar página
+title.add_property: Añadir propiedad
+title.edit_property: Editar propiedad
+title.add_city: Añadir Localidad
+title.edit_city: Editar Localidad
+title.add_neighborhood: Añadir barrio
+title.add_district: Agregar distrito
+title.add_metro_station: Añadir estación
+title.edit_neighborhood: editar barrio
+title.edit_district: Editar distrito
+title.edit_metro_station: Editar estación
+title.add_deal_type: Agregar nuevo tipo de operación
+title.edit_deal_type: Editar tipo de operación
+title.add_category: Añadir categoria
+title.edit_category: Edit categoria
+title.add_feature: Añadir característica
+title.edit_feature: Editar característica
+title.add_currency: Add New Currency
+title.edit_currency: Edit Currency
+title.add_user: Add New User
+title.edit_user: Edit user
+title.add_menu_item: Add Menu Item
+title.edit_menu_item: Edit Menu Item
+title.upload_photos: Upload photos
+title.settings: Settings
+title.settings.header_settings: Header settings
+title.settings.map_settings: Map settings
+title.settings.logo_image_label: Site logo
+title.settings.header_image_label: Header image
+label.remember_me: Keep me logged in
+label.settings.name: Site Name
+label.settings.title: Site Title
+label.meta_title: Meta Title
+label.meta_description: Meta Description
+label.settings.code: Custom Code in Header (Google Analytics etc.)
+label.settings.custom_footer_text: Custom Footer Text
+label.settings.limit: Number Of Items Per Page
+label.settings.show_language_selector: Show language selector
+label.settings.anyone_can_register: Anyone can register
+label.settings.currency: Currency
+label.settings.fixed_top_navbar: Fixed Top Navbar
+label.settings.show_similar_properties: Show Similar Properties
+label.settings.ymaps_key: Yandex.Maps JavaScript API key
+label.settings.map_center: Map center
+label.settings.map_zoom: 'Zoom level. Acceptable values: from 0 (the entire world) to 19'
+label.settings.show_filter_by_city: Show filter by city
+label.settings.show_filter_by_deal_type: Show filter by deal type
+label.settings.show_filter_by_category: Show filter by category
+label.settings.show_filter_by_bedrooms: Show filter by bedrooms
+label.settings.show_filter_by_guests: Show filter by guests
+label.settings.show_filter_by_features: Show filter by features
+label.roles.admin: Admin permissions
+label.full_name: Full name
+label.username: Username
+label.phone: Phone
+label.email: Email
+label.email_verified: Email Verified
+label.agree: I agree to the terms and conditions.
+label.password: Password
+label.new_password: New password
+label.confirm_password: Confirm new password
+label.name: Name
+label.slug: Slug
+label.currency_title: Currency Title
+label.code: Code
+label.symbol_left: Symbol Left
+label.symbol_right: Symbol Right
+label.photo: Photo
+label.city: City
+label.neighborhood: Neighborhood
+label.district: District
+label.neighborhood_name: Neighborhood name
+label.district_name: District name
+label.metro_station_name: Metro station name
+label.deal_type: Deal Type
+label.category: Category
+label.features: Features
+label.priority_number: Listing priority number
+label.priority_number.help: The default priority is zero; relative to the default a priority can be higher (positive numbers) or lower (negative numbers).
+label.agent: Agent
+label.moderation_status: Moderation status
+option.published: Published
+option.private: Private
+option.pending: Pending review
+option.rejected: Rejected
+option.all: All
+label.feature: Feature name
+label.custom_icon: Custom icon (optional)
+label.bathrooms_number: Number of Bathrooms
+label.bedrooms_number: Number of Bedrooms
+label.max_guests: Max Guests
+label.guests: Guests
+label.title: Title
+label.link_text: Link Text
+label.url: URL
+label.locale: Language
+label.new_tab: Open in new tab
+label.nofollow: Nofollow
+label.description: Description
+label.address: Address
+label.latitude: Latitude
+label.longitude: Longitude
+label.show_map: Show map
+label.price: Price
+label.price_type: Price type
+label.available_now: Available now
+label.content: Content
+label.show_in_menu: Show in menu
+label.add_contact_form: Add a Contact Form
+label.contact_email_address: Contact Email Address
+label.message: Message
+label.create_category: Create category
+label.create_currency: Create currency
+label.create_feature: Create feature
+label.create_deal_type: Create deal type
+label.create_city: Create city
+label.create_neighborhood: Create neighborhood
+label.create_district: Create district
+label.create_metro_station: Create metro station
+label.create_page: Create page
+label.create_property: Create property
+label.create_user: Create user
+label.save_and_create_new: Save and create new
+label.sort_by: Sort by
+option.on: On
+option.off: Off
+option.any: Any
+option.bedroom: bedroom
+option.bedrooms: bedrooms
+option.priority: Priority
+option.latest: Latest
+password.change: Change Password
+password.length: 10 Characters Minimum
+password.uppercase: Uppercase Letters
+password.lowercase: Lowercase Letters
+password.numbers: Numbers
+password.match: Passwords Match
+password.progress: Changing Password...
+placeholder.map_center_example: e.g. 27.188534, -81.128735
+placeholder.select_city: Select a city
+placeholder.select_neighborhood: Select a neighborhood
+placeholder.select_district: Select a district
+placeholder.select_metro_station: Select a Metro station
+placeholder.enter_email: Enter your email
+placeholder.example_icon: e.g. <i class="fas fa-check"></i>
+property.location: Location
+property.deal_type: Deal Type
+property.category: Category
+property.bathrooms: Bathrooms
+property.bedrooms: Bedrooms
+property.max_guests: Max Guests
+property.available_now: Available now
+property.price: Price
+similar_properties: Similar Properties
+all_rights_reserved: All Rights Reserved
+drag_photos: Drag photos to reorder
+click_save_reordering: Click 'Save Reordering' when finished.
+processing: Please wait...
+email.new_message: New Message From Your Website
+resetting.email.subject: Reset Password
+resetting.email.message: Hello %username%! To reset your password - please visit %confirmationUrl% Regards, the Team.
+confirmation.email.resend: Resend Verification Link
+confirmation.email.success: Verification email has been sent to
+confirmation.email.subject: Please Confirm your Email
+confirmation.email.message: 'Hello! Please confirm your email address by clicking the following link: %signedUrl% If you''re having trouble clicking the link, copy and paste the URL into your web browser. This link will expire in %expiresAt%. If you did not create an account, no further action is required. Cheers!'
