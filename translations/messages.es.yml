@@ -270,3 +270,4 @@ confirmation.email.resend: Reenviar enlace de verificación
 confirmation.email.success: El correo electrónico de verificación ha sido enviado a
 confirmation.email.subject: Por favor, confirma tu email
 confirmation.email.message: '¡Hola! Confirme su dirección de correo electrónico haciendo clic en el siguiente enlace: %signedUrl% Si tiene problemas para hacer clic en el enlace, copie y pegue la URL en su navegador web. Este enlace caducará en %expiresAt%. Si no creó una cuenta, no se requiere ninguna otra acción. ¡Salud!'
+'Sale': Compra
