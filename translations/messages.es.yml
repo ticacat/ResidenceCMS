@@ -119,154 +119,154 @@ title.edit_metro_station: Editar estación
 title.add_deal_type: Agregar nuevo tipo de operación
 title.edit_deal_type: Editar tipo de operación
 title.add_category: Añadir categoria
-title.edit_category: Edit categoria
+title.edit_category: Editar categoria
 title.add_feature: Añadir característica
 title.edit_feature: Editar característica
-title.add_currency: Add New Currency
-title.edit_currency: Edit Currency
-title.add_user: Add New User
-title.edit_user: Edit user
-title.add_menu_item: Add Menu Item
-title.edit_menu_item: Edit Menu Item
-title.upload_photos: Upload photos
-title.settings: Settings
-title.settings.header_settings: Header settings
-title.settings.map_settings: Map settings
-title.settings.logo_image_label: Site logo
-title.settings.header_image_label: Header image
-label.remember_me: Keep me logged in
-label.settings.name: Site Name
-label.settings.title: Site Title
-label.meta_title: Meta Title
-label.meta_description: Meta Description
-label.settings.code: Custom Code in Header (Google Analytics etc.)
-label.settings.custom_footer_text: Custom Footer Text
-label.settings.limit: Number Of Items Per Page
-label.settings.show_language_selector: Show language selector
-label.settings.anyone_can_register: Anyone can register
-label.settings.currency: Currency
-label.settings.fixed_top_navbar: Fixed Top Navbar
-label.settings.show_similar_properties: Show Similar Properties
-label.settings.ymaps_key: Goolge Maps JavaScript API key
-label.settings.map_center: Map center
-label.settings.map_zoom: 'Zoom level. Acceptable values: from 0 (the entire world) to 19'
-label.settings.show_filter_by_city: Show filter by city
-label.settings.show_filter_by_deal_type: Show filter by deal type
-label.settings.show_filter_by_category: Show filter by category
-label.settings.show_filter_by_bedrooms: Show filter by bedrooms
-label.settings.show_filter_by_guests: Show filter by guests
-label.settings.show_filter_by_features: Show filter by features
-label.roles.admin: Admin permissions
-label.full_name: Full name
-label.username: Username
-label.phone: Phone
-label.email: Email
-label.email_verified: Email Verified
-label.agree: I agree to the terms and conditions.
-label.password: Password
-label.new_password: New password
-label.confirm_password: Confirm new password
-label.name: Name
+title.add_currency: Agregar nueva moneda
+title.edit_currency: Editar moneda
+title.add_user: Agregar nuevo usuario
+title.edit_user: Editar usuario
+title.add_menu_item: Agregar elemento de menú
+title.edit_menu_item: Editar elemento del menú
+title.upload_photos: Subir fotos
+title.settings: Ajustes
+title.settings.header_settings: Configuración de Cabecera
+title.settings.map_settings: Configuración del mapa
+title.settings.logo_image_label: Logo del sitio
+title.settings.header_image_label: Imagen de cabecera
+label.remember_me: Mantenme conectado
+label.settings.name: Nombre del sitio
+label.settings.title: Título del sitio
+label.meta_title: Meta título
+label.meta_description: Meta descripción
+label.settings.code: Código personalizado en el encabezado (Google Analytics, etc.)
+label.settings.custom_footer_text: Texto de pie de página personalizado
+label.settings.limit: Número de elementos por página
+label.settings.show_language_selector: Mostrar selector de idioma
+label.settings.anyone_can_register: Cualquiera puede registrarse
+label.settings.currency: Divisa
+label.settings.fixed_top_navbar: Barra de navegación superior fija
+label.settings.show_similar_properties: Mostrar propiedades similares
+label.settings.ymaps_key: Clave de la API de JavaScript de Google Maps
+label.settings.map_center: centro del mapa
+label.settings.map_zoom: 'Nivel de zoom. Valores aceptables: de 0 (el mundo entero) a 19'
+label.settings.show_filter_by_city: Mostrar filtro por ciudad
+label.settings.show_filter_by_deal_type: Mostrar filtro por tipo de operación
+label.settings.show_filter_by_category: Mostrar filtro por categoría
+label.settings.show_filter_by_bedrooms: Mostrar filtro por habitaciones
+label.settings.show_filter_by_guests: Mostrar filtro por los invitados
+label.settings.show_filter_by_features: Mostrar filtro por características
+label.roles.admin: Permisos de administrador
+label.full_name: Nombre completo
+label.username: Nombre de usuario
+label.phone: Teléfono
+label.email: Correo Electrónico
+label.email_verified: Correo Electrónico Verificado
+label.agree: Estoy de acuerdo con los términos y condiciones.
+label.password: Contraseña
+label.new_password: Nueva Contraseña
+label.confirm_password: Confirmar nueva contraseña
+label.name: Nombre
 label.slug: Slug
-label.currency_title: Currency Title
+label.currency_title: Nombre de moneda
 label.code: Code
-label.symbol_left: Symbol Left
-label.symbol_right: Symbol Right
-label.photo: Photo
-label.city: City
-label.neighborhood: Neighborhood
-label.district: District
-label.neighborhood_name: Neighborhood name
-label.district_name: District name
-label.metro_station_name: Metro station name
-label.deal_type: Deal Type
-label.category: Category
-label.features: Features
-label.priority_number: Listing priority number
-label.priority_number.help: The default priority is zero; relative to the default a priority can be higher (positive numbers) or lower (negative numbers).
-label.agent: Agent
+label.symbol_left: Símbolo Izquierda
+label.symbol_right: Símbolo derecha
+label.photo: Foto
+label.city: Ciudad
+label.neighborhood: Barrio
+label.district: Distrito
+label.neighborhood_name: "Nombre del barrio\n"
+label.district_name: Nombre del distrito
+label.metro_station_name: Nombre de la estación de metro
+label.deal_type: Tipo de operación
+label.category: Categoría
+label.features: Características
+label.priority_number: Listado de número de prioridad
+label.priority_number.help: La prioridad predeterminada es cero; en relación con el valor predeterminado, una prioridad puede ser mayor (números positivos) o menor (números negativos).
+label.agent: Agente
 label.moderation_status: Moderation status
-option.published: Published
-option.private: Private
-option.pending: Pending review
-option.rejected: Rejected
-option.all: All
-label.feature: Feature name
-label.custom_icon: Custom icon (optional)
-label.bathrooms_number: Number of Bathrooms
-label.bedrooms_number: Number of Bedrooms
-label.max_guests: Max Guests
-label.guests: Guests
-label.title: Title
-label.link_text: Link Text
+option.published: Publicado
+option.private: Privado
+option.pending: Revisión pendiente
+option.rejected: Rechazado
+option.all: Todos
+label.feature: Nombre de la característica
+label.custom_icon: Icono personalizado (opcional)
+label.bathrooms_number: Número de baños
+label.bedrooms_number: Numero de habitaciones
+label.max_guests: Max invitados
+label.guests: Invitados
+label.title: Título
+label.link_text: Texto del enlace
 label.url: URL
-label.locale: Language
-label.new_tab: Open in new tab
+label.locale: Idioma
+label.new_tab: Abrir en una pestaña nueva
 label.nofollow: Nofollow
-label.description: Description
-label.address: Address
+label.description: Descripción
+label.address: Dirección
 label.latitude: Latitude
 label.longitude: Longitude
-label.show_map: Show map
-label.price: Price
-label.price_type: Price type
-label.available_now: Available now
-label.content: Content
-label.show_in_menu: Show in menu
-label.add_contact_form: Add a Contact Form
-label.contact_email_address: Contact Email Address
-label.message: Message
-label.create_category: Create category
-label.create_currency: Create currency
-label.create_feature: Create feature
-label.create_deal_type: Create deal type
-label.create_city: Create city
-label.create_neighborhood: Create neighborhood
-label.create_district: Create district
-label.create_metro_station: Create metro station
-label.create_page: Create page
-label.create_property: Create property
-label.create_user: Create user
-label.save_and_create_new: Save and create new
-label.sort_by: Sort by
+label.show_map: Mostrar mapa
+label.price: Precio
+label.price_type: Tipo de precio
+label.available_now: Disponible ahora
+label.content: Contenido
+label.show_in_menu: Mostrar en el menú
+label.add_contact_form: Agregar un formulario de contacto
+label.contact_email_address: Correo electrónico de contacto
+label.message: Mensaje
+label.create_category: Crear categoría
+label.create_currency: Crear divisa
+label.create_feature: Crear característica
+label.create_deal_type: Crear tipo de operación
+label.create_city: Crear ciudad
+label.create_neighborhood: Crear barrio
+label.create_district: Crear distrito
+label.create_metro_station: Crear estación de metro
+label.create_page: Crear página
+label.create_property: Crear propiedad
+label.create_user: Crear usuario
+label.save_and_create_new: Guardar y crear nuevo
+label.sort_by: Ordenar por
 option.on: On
 option.off: Off
-option.any: Any
-option.bedroom: bedroom
-option.bedrooms: bedrooms
-option.priority: Priority
-option.latest: Latest
-password.change: Change Password
-password.length: 10 Characters Minimum
-password.uppercase: Uppercase Letters
-password.lowercase: Lowercase Letters
-password.numbers: Numbers
-password.match: Passwords Match
-password.progress: Changing Password...
+option.any: Cualquiera
+option.bedroom: Habitación
+option.bedrooms: Habitaciónes
+option.priority: Prioridad
+option.latest: Más reciente
+password.change: Cambia la contraseña
+password.length: 10 caracteres mínimo
+password.uppercase: Letras mayúsculas
+password.lowercase: Letras minusculas
+password.numbers: Números
+password.match: Las contraseñas coinciden
+password.progress: Cambiando contraseña...
 placeholder.map_center_example: e.g. 27.188534, -81.128735
-placeholder.select_city: Select a city
-placeholder.select_neighborhood: Select a neighborhood
-placeholder.select_district: Select a district
-placeholder.select_metro_station: Select a Metro station
-placeholder.enter_email: Enter your email
+placeholder.select_city: Seleccione una ciudad
+placeholder.select_neighborhood: Selecciona un barrio
+placeholder.select_district: Seleccione un distrito
+placeholder.select_metro_station: Seleccione una estación de Metro
+placeholder.enter_email: Introduce tu correo electrónico
 placeholder.example_icon: e.g. <i class="fas fa-check"></i>
-property.location: Location
-property.deal_type: Deal Type
-property.category: Category
-property.bathrooms: Bathrooms
-property.bedrooms: Bedrooms
-property.max_guests: Max Guests
-property.available_now: Available now
-property.price: Price
-similar_properties: Similar Properties
-all_rights_reserved: All Rights Reserved
-drag_photos: Drag photos to reorder
-click_save_reordering: Click 'Save Reordering' when finished.
-processing: Please wait...
-email.new_message: New Message From Your Website
-resetting.email.subject: Reset Password
-resetting.email.message: Hello %username%! To reset your password - please visit %confirmationUrl% Regards, the Team.
-confirmation.email.resend: Resend Verification Link
-confirmation.email.success: Verification email has been sent to
-confirmation.email.subject: Please Confirm your Email
-confirmation.email.message: 'Hello! Please confirm your email address by clicking the following link: %signedUrl% If you''re having trouble clicking the link, copy and paste the URL into your web browser. This link will expire in %expiresAt%. If you did not create an account, no further action is required. Cheers!'
+property.location: Ubicación
+property.deal_type: Tipo de operación
+property.category: Categoría
+property.bathrooms: Baños
+property.bedrooms: Habitaciones
+property.max_guests: Max invitados
+property.available_now: Disponible ahora
+property.price: Precio
+similar_properties: Propiedades similares
+all_rights_reserved: Reservados todos los derechos
+drag_photos: Arrastra fotos para reordenar
+click_save_reordering: Haga clic en 'Guardar reordenación' cuando haya terminado.
+processing: Espere por favor...
+email.new_message: Nuevo mensaje de su sitio web
+resetting.email.subject: Restablecer la contraseña
+resetting.email.message: Hola %username%! Para restablecer su contraseña, visite %confirmationUrl% Saludos, el equipo.
+confirmation.email.resend: Reenviar enlace de verificación
+confirmation.email.success: El correo electrónico de verificación ha sido enviado a
+confirmation.email.subject: Por favor, confirma tu email
+confirmation.email.message: '¡Hola! Confirme su dirección de correo electrónico haciendo clic en el siguiente enlace: %signedUrl% Si tiene problemas para hacer clic en el enlace, copie y pegue la URL en su navegador web. Este enlace caducará en %expiresAt%. Si no creó una cuenta, no se requiere ninguna otra acción. ¡Salud!'
