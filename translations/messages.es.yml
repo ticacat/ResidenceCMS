@@ -147,7 +147,7 @@ label.settings.anyone_can_register: Anyone can register
 label.settings.currency: Currency
 label.settings.fixed_top_navbar: Fixed Top Navbar
 label.settings.show_similar_properties: Show Similar Properties
-label.settings.ymaps_key: Yandex.Maps JavaScript API key
+label.settings.ymaps_key: Goolge Maps JavaScript API key
 label.settings.map_center: Map center
 label.settings.map_zoom: 'Zoom level. Acceptable values: from 0 (the entire world) to 19'
 label.settings.show_filter_by_city: Show filter by city
