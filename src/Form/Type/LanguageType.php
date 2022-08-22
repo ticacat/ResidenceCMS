@@ -20,8 +20,8 @@ final class LanguageType extends AbstractType
             'choices' => [
                 'Select language' => '',
                 'English' => 'en',
-                'Nederlands' => 'nl',
-                'Български' => 'bg',
+                'Español' => 'es',
+                'Français' => 'fr',
                 'Русский' => 'ru',
             ],
             'label' => 'label.locale',
