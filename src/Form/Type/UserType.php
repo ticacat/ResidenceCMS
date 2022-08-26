@@ -38,7 +38,16 @@ final class     UserType extends AbstractType
                     'label_attr' => ['class' => 'switch-custom'],
                 ]
             )
-            ->add('level', null)
+            ->add('level', ChoiceType::class, [
+                'label' => 'label.property_level',
+                'choices' => [
+                    'option.base' => 0,
+                    'option.bronze' => 10,
+                    'option.silver' => 20,
+                    'option.gold' => 30,
+                    'option.top' => 99
+                ],
+            ])
             ->add('username', null, [
                 'label' => 'label.username',
             ])

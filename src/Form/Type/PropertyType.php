@@ -58,7 +58,7 @@ final class PropertyType extends AbstractType
                 'placeholder' => 'placeholder.select_city',
                 'label' => 'label.city',
             ])
-          
+
             ->add('neighborhood', EntityType::class, [
                 'class' => Neighborhood::class,
                 'choice_label' => 'name',
@@ -67,7 +67,7 @@ final class PropertyType extends AbstractType
                 'required' => false,
                 'choices' => [],
             ])
-          
+
 
             ->add('dealType', EntityType::class, [
                 'class' => DealType::class,
@@ -85,7 +85,7 @@ final class PropertyType extends AbstractType
             ->add('bedrooms_number', null, [
                 'label' => 'label.bedrooms_number',
             ])
-            
+
 
             ->add('address', null, [
                 'label' => 'label.address',
@@ -108,7 +108,7 @@ final class PropertyType extends AbstractType
             ->add('price_type', null, [
                 'label' => 'label.price_type',
             ])
-            
+
 
             ->add('show_slider_homepage', CheckboxType::class, [
                 'label' => 'label.show_slider_homepage',
@@ -116,9 +116,16 @@ final class PropertyType extends AbstractType
                 'required' => false,
             ])
 
-            ->add('level', null, [
+
+            ->add('level', ChoiceType::class, [
                 'label' => 'label.property_level',
-                'required' => true,
+                'choices' => [
+                    'option.base' => 0,
+                    'option.bronze' => 10,
+                    'option.silver' => 20,
+                    'option.gold' => 30,
+                    'option.top' => 99
+                ],
             ])
 
             ->add('available_now', CheckboxType::class, [

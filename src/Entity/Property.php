@@ -64,7 +64,7 @@ class Property
     private $show_map;
 
      /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=true, options={"default": 0})
      */
     private $level;
 
@@ -204,7 +204,7 @@ class Property
         return $this;
     }
 
-    
+
     public function getShowSliderHomepage(): ?bool
     {
         return $this->show_slider_homepage;
