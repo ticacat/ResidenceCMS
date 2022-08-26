@@ -93,14 +93,14 @@ final class ContactController extends BaseController
      * @Route("/contact/{id<\d+>}/delete", methods={"POST"}, name="admin_contact_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, User $user, UserService $service): Response
+    public function delete(Request $request, Contact $contact, ContactService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('admin_user');
+            return $this->redirectToRoute('admin_contact');
         }
 
-        $service->remove($user);
+        $service->remove($contact);
 
-        return $this->redirectToRoute('admin_user');
+        return $this->redirectToRoute('admin_contact');
     }
 }
