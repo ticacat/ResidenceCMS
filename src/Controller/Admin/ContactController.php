@@ -28,7 +28,7 @@ final class ContactController extends BaseController
      */
     public function index(Request $request, ContactRepository $repository): Response
     {
-        $contacts = $repository->findAll();
+        $contacts = $repository->findBy(['state' => ['unseen','pendent_response']],['id'=> 'desc']);
 
         return $this->render('admin/contact/index.html.twig', [
             'site' => $this->site($request),

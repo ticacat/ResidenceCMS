@@ -32,7 +32,15 @@ final class ContactType extends AbstractType
             ->add('telefon', null)
             ->add('email', null)
             ->add('content', null)
-
+            ->add('state', ChoiceType::class, [
+                'label' => 'label.moderation_status',
+                'choices' => [
+                    'option.unseen' => 'unseen',
+                    'option.pending_response' => 'pending_response',
+                    'option.viewed' => 'viewed',
+                    'option.spam' => 'spam',
+                ],
+            ]);
 
         ;
 

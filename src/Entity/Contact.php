@@ -32,7 +32,7 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", unique=false)
      */
     private $telefon;
 
@@ -56,6 +56,14 @@ class Contact
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $legal;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, options={"default": "pending"})
+     */
+    private $state = 'unseen';
+
+
 
     /**
      * @return string
@@ -137,5 +145,15 @@ class Contact
         $this->legal = $legal;
     }
 
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
 
+    public function setState(string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
 }

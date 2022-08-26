@@ -27,6 +27,8 @@
                         <th class="hidden-sm">{{ 'table.fullname' | trans }}</th>
                         <th>{{ 'table.telefon' | trans }}</th>
                         <th>{{ 'table.email' | trans }}</th>
+                        <th>{{ 'table.date' | trans }}</th>
+                        <th>{{ 'table.status' | trans }}</th>
                         <th>{{ 'table.action' | trans }}</th>
                     </tr>
                     </thead>
@@ -37,6 +39,8 @@
                             <td class="hidden-sm">{{ contact.fullname }}</td>
                             <td>{{ contact.telefon }}</td>
                             <td>{{ contact.email }}</td>
+                            <td>{{ contact.createdAt|date('d/m/Y H:i') }}</td>
+                            <td>{{ contact.state | trans }}</td>
                             <td>
                                 {{ include('admin/contact/_action_form.html.twig', {contact: contact}, with_context = false) }}
                             </td>
