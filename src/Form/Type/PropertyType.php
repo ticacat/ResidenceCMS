@@ -58,14 +58,7 @@ final class PropertyType extends AbstractType
                 'placeholder' => 'placeholder.select_city',
                 'label' => 'label.city',
             ])
-            ->add('district', EntityType::class, [
-                'class' => District::class,
-                'choice_label' => 'name',
-                'placeholder' => 'placeholder.select_district',
-                'label' => 'label.district',
-                'required' => false,
-                'choices' => [],
-            ])
+          
             ->add('neighborhood', EntityType::class, [
                 'class' => Neighborhood::class,
                 'choice_label' => 'name',
@@ -74,14 +67,8 @@ final class PropertyType extends AbstractType
                 'required' => false,
                 'choices' => [],
             ])
-            ->add('metro_station', EntityType::class, [
-                'class' => Metro::class,
-                'choice_label' => 'name',
-                'placeholder' => 'placeholder.select_metro_station',
-                'label' => 'label.metro_station_name',
-                'required' => false,
-                'choices' => [],
-            ])
+          
+
             ->add('dealType', EntityType::class, [
                 'class' => DealType::class,
                 'choice_label' => 'name',
@@ -98,9 +85,8 @@ final class PropertyType extends AbstractType
             ->add('bedrooms_number', null, [
                 'label' => 'label.bedrooms_number',
             ])
-            ->add('max_guests', null, [
-                'label' => 'label.max_guests',
-            ])
+            
+
             ->add('address', null, [
                 'label' => 'label.address',
             ])
@@ -110,6 +96,7 @@ final class PropertyType extends AbstractType
             ->add('longitude', null, [
                 'label' => 'label.longitude',
             ])
+
             ->add('show_map', CheckboxType::class, [
                 'label' => 'label.show_map',
                 'label_attr' => ['class' => 'switch-custom'],
@@ -121,6 +108,19 @@ final class PropertyType extends AbstractType
             ->add('price_type', null, [
                 'label' => 'label.price_type',
             ])
+            
+
+            ->add('show_slider_homepage', CheckboxType::class, [
+                'label' => 'label.show_slider_homepage',
+                'label_attr' => ['class' => 'switch-custom'],
+                'required' => false,
+            ])
+
+            ->add('level', null, [
+                'label' => 'label.property_level',
+                'required' => true,
+            ])
+
             ->add('available_now', CheckboxType::class, [
                 'label' => 'label.available_now',
                 'label_attr' => ['class' => 'switch-custom'],
@@ -138,12 +138,13 @@ final class PropertyType extends AbstractType
         $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber())
             ->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());
 
-        $builder->addEventSubscriber(new AddDistrictFieldSubscriber())
+     /*   $builder->addEventSubscriber(new AddDistrictFieldSubscriber())
             ->get('city')->addEventSubscriber(new UpdateDistrictFieldSubscriber());
 
         $builder->addEventSubscriber(new AddMetroFieldSubscriber())
             ->get('city')->addEventSubscriber(new UpdateMetroFieldSubscriber());
 
+                */
         if ($this->security->isGranted('ROLE_ADMIN')) {
             $this->addFieldsForAdmin($builder);
         }

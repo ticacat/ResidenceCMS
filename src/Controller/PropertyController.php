@@ -23,6 +23,8 @@ final class PropertyController extends BaseController
     public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
         $searchParams = $transformer->transform($request);
+
+        $searchParams['level'] = $this->getUser()? $this->getUser()->getLevel(): 0;
         $properties = $repository->findByFilter($searchParams);
 
         return $this->render('property/index.html.twig',

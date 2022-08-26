@@ -27,17 +27,13 @@
                     {{ form_row(form.city) }}
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-3">
-                    {{ form_row(form.district) }}
-                </div>
+            
 
                 <div class="col-md-6 col-lg-4 mb-3">
                     {{ form_row(form.neighborhood) }}
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-3">
-                    {{ form_row(form.metro_station) }}
-                </div>
+ 
 
             </div>
             <hr>
@@ -61,9 +57,7 @@
                     {{ form_row(form.bedrooms_number) }}
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-3">
-                    {{ form_row(form.max_guests) }}
-                </div>
+                
             </div>
 
             {{ form_row(form.property_description.title) }}
@@ -99,6 +93,8 @@
             </div>
 
             {{ form_row(form.available_now) }}
+            {{ form_row(form.show_slider_homepage) }}
+            {{ form_row(form.level) }}
 
             <div class="form-group">
                 {{ form_row(form.features) }}

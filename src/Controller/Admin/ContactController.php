@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\BaseController;
+use App\Entity\Contact;
 use App\Entity\User;
+use App\Form\Type\ContactType;
 use App\Form\Type\UserType;
+use App\Repository\ContactRepository;
 use App\Repository\UserRepository;
+use App\Service\Admin\ContactService;
 use App\Service\Admin\UserService;
 use App\Utils\UserFormDataSelector;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -17,49 +21,48 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class UserController extends BaseController
+final class ContactController extends BaseController
 {
     /**
-     * @Route("/admin/user", name="admin_user")
+     * @Route("/admin/contact", name="admin_contact")
      */
-    public function index(Request $request, UserRepository $repository): Response
+    public function index(Request $request, ContactRepository $repository): Response
     {
-        $users = $repository->findAll();
+        $contacts = $repository->findAll();
 
-        return $this->render('admin/user/index.html.twig', [
+        return $this->render('admin/contact/index.html.twig', [
             'site' => $this->site($request),
-            'users' => $users,
+            'contacts' => $contacts,
         ]);
     }
 
     /**
-     * @Route("/admin/user/new", name="admin_user_new")
+     * @Route("/admin/contact/new", name="admin_contact_new")
      */
-    public function new(Request $request, UserService $service, UserFormDataSelector $selector): Response
+    public function new(Request $request, ContactService $service): Response
     {
-        $user = new User();
+        $contact = new Contact();
 
-        $form = $this->createForm(UserType::class, $user)
+        $form = $this->createForm(ContactType::class, $contact)
             ->add('saveAndCreateNew', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $emailVerifiedAt = $selector->getEmailVerifiedAt($form);
-            $user->setEmailVerifiedAt($emailVerifiedAt);
-            $service->create($user);
+
+            $service->create($contact);
 
             /** @var ClickableInterface $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
-                return $this->redirectToRoute('admin_user_new');
+                return $this->redirectToRoute('admin_contact_new');
             }
 
-            return $this->redirectToRoute('admin_user');
+            return $this->redirectToRoute('admin_contact');
         }
 
-        return $this->render('admin/user/new.html.twig', [
+        return $this->render('admin/contact/new.html.twig', [
             'site' => $this->site($request),
-            'user' => $user,
+            'contact' => $contact,
             'form' => $form->createView(),
         ]);
     }
@@ -67,25 +70,18 @@ final class UserController extends BaseController
     /**
      * Displays a form to edit an existing User entity.
      *
-     * @Route("/admin/user/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_user_edit")
+     * @Route("/admin/contact/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_contact_edit")
      */
-    public function edit(Request $request, User $user, UserService $service, UserFormDataSelector $selector): Response
+    public function edit(Request $request, Contact $contact, ContactService $service): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            if ($user->isVerified() !== $selector->getEmailVerified($form)) {
-                $emailVerifiedAt = $selector->getEmailVerifiedAt($form);
-                $user->setEmailVerifiedAt($emailVerifiedAt);
-            }
-
-            $service->update($user);
-
-            return $this->redirectToRoute('admin_user');
+            $service->update($contact);
+            return $this->redirectToRoute('admin_contact');
         }
 
-        return $this->render('admin/user/edit.html.twig', [
+        return $this->render('admin/contact/edit.html.twig', [
             'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
@@ -94,7 +90,7 @@ final class UserController extends BaseController
     /**
      * Deletes an User entity.
      *
-     * @Route("/user/{id<\d+>}/delete", methods={"POST"}, name="admin_user_delete")
+     * @Route("/contact/{id<\d+>}/delete", methods={"POST"}, name="admin_contact_delete")
      * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, User $user, UserService $service): Response

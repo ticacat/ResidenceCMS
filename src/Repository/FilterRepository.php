@@ -20,6 +20,16 @@ final class FilterRepository extends PropertyRepository
             $qb->where("p.state = 'published'");
         }
 
+       // Number of bedrooms
+       if (!isset($params['level'])) {
+            $qb->andWhere('( p.level is null or p.level = 0) ');
+       } else{
+
+            $qb->andWhere('(p.level is null or p.level <= :level)')
+                ->setParameter(':level', (int) $params['level']);;
+        }
+
+
         // Number of bedrooms
         if ($params['bedrooms'] > 3) {
             $qb->andWhere('p.bedrooms_number > 3');
@@ -44,6 +54,8 @@ final class FilterRepository extends PropertyRepository
             $qb->andWhere(':feature MEMBER OF p.features')
                 ->setParameter(':feature', (int) $params['feature']);
         }
+
+
 
         // Sort by
         ('id' === $params['sort_by'])

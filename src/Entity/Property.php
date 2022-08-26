@@ -63,6 +63,16 @@ class Property
      */
     private $show_map;
 
+     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $level;
+
+     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $show_slider_homepage;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -190,6 +200,31 @@ class Property
     public function setShowMap(?bool $show_map): self
     {
         $this->show_map = $show_map;
+
+        return $this;
+    }
+
+    
+    public function getShowSliderHomepage(): ?bool
+    {
+        return $this->show_slider_homepage;
+    }
+
+    public function setShowSliderHomepage(?bool $show_slider_homepage): self
+    {
+        $this->show_slider_homepage = $show_slider_homepage;
+
+        return $this;
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?int $level): self
+    {
+        $this->level = $level;
 
         return $this;
     }

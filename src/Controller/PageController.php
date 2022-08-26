@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Dto\FeedbackDto;
+use App\Entity\Contact;
 use App\Entity\Page;
 use App\Form\Type\FeedbackType;
 use App\Message\SendFeedback;
@@ -21,6 +22,7 @@ final class PageController extends BaseController
      */
     public function pageShow(Request $request, MessageBusInterface $messageBus, PageRepository $pageRepository): Response
     {
+
         $slug = $request->attributes->get('slug');
         $page = $pageRepository->findOneBy(['locale' => $request->getLocale(), 'slug' => $slug])
             ?? $pageRepository->findOneBy(['slug' => $slug]);
@@ -33,6 +35,7 @@ final class PageController extends BaseController
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
+                $this->saveFeedBack($feedback);
                 $messageBus->dispatch(new SendFeedback($feedback));
                 $this->addFlash('success', 'message.was_sent');
 
@@ -47,5 +50,26 @@ final class PageController extends BaseController
                 'form' => (!empty($form) ? $form->createView() : []),
             ]
         );
+    }
+
+
+    function saveFeedBack(FeedbackDto $feedback){
+
+        $contact = new Contact();
+
+
+
+        $contact->setEmail($feedback->getFromEmail());
+        $contact->setFullname($feedback->getFromName());
+        $contact->setLegal(true);
+        $contact->setTelefon('43543534');
+        $contact->setContent(
+
+            $feedback->getMessage());
+        $em =$this->doctrine->getManager();
+        $em->persist($contact);
+        $em->flush();
+
+
     }
 }

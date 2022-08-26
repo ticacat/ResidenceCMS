@@ -16,7 +16,7 @@
             <i class="fas fa-plus float-icon"></i>
         </a>
 
-    {% elseif is_granted('ROLE_USER') %}
+    {% elseif is_granted('ROLE_USER')  and app.user.colaborador %}
 
         <a href="{{ url('user_property_new') }}" class="btn btn-primary float">
             <i class="fas fa-plus float-icon"></i>
@@ -68,9 +68,7 @@
 
                             {% if property.price != '' %}
                                 <span class="price">
-                                    {{ site.currency.symbolLeft }}{{ property.price }}
-                                    {{ site.currency.symbolRight }}
-
+                                    {{ property.price|format_currency('EUR', {fraction_digit: 0}) }}
                                     {% if property.priceType != '' %}
                                         / {{ property.priceType }}
                                     {% endif %}

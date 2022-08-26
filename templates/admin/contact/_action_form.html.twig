@@ -1,0 +1,11 @@
+<form action="{{ url('admin_contact_delete', {id: contact.id}) }}" method="post"
+      id="delete-form-{{ contact.id }}">
+
+    <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
+
+    <a href="{{ url('admin_contact_edit', {id: contact.id}) }}"
+       class="btn btn-sm btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
+
+    {{ include('common/_delete_button.html.twig') }}
+
+</form>

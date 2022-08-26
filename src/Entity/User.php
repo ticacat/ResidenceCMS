@@ -58,6 +58,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $level;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="author")
      */
     private $properties;
@@ -67,6 +72,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $confirmation_token;
 
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $colaborador;
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
@@ -130,7 +140,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles = $this->roles;
         // guarantees that a user always has at least one role for security
         if (empty($roles)) {
-            $roles[] = 'ROLE_USER';
+//            $roles[] = 'ROLE_USER';
         }
 
         return array_unique($roles);
@@ -277,4 +287,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLevel():?int
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param mixed $level
+     */
+    public function setLevel($level): void
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getColaborador()
+    {
+        return $this->colaborador;
+    }
+
+    /**
+     * @param mixed $colaborador
+     */
+    public function setColaborador($colaborador): void
+    {
+        $this->colaborador = $colaborador;
+    }
+
+
 }

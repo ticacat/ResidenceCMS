@@ -22,6 +22,7 @@ final class PropertyController extends BaseController
      */
     public function index(Request $request, PropertyService $service): Response
     {
+        if(!$this->getUser()->getColaborador()) return $this->redirectToRoute('default_route');
         $properties = $service->getUserProperties($request);
 
         return $this->render('user/property/index.html.twig', [
@@ -35,10 +36,13 @@ final class PropertyController extends BaseController
      */
     public function new(Request $request, AdminPropertyService $service): Response
     {
+
         /**
          * @var User $user
          */
         $user = $this->getUser();
+        if(!$this->getUser()->getColaborador()) return $this->redirectToRoute('default_route');
+
         if (!$user->isVerified()) {
             return $this->redirectToRoute('user_property');
         }
@@ -68,6 +72,10 @@ final class PropertyController extends BaseController
      */
     public function edit(Request $request, Property $property, AdminPropertyService $service): Response
     {
+
+
+        if(!$this->getUser()->getColaborador()) return $this->redirectToRoute('default_route');
+
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 

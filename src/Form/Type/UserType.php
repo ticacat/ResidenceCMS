@@ -18,13 +18,14 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class UserType extends AbstractType
+final class     UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder
             ->add(
                 'roles', ChoiceType::class, [
@@ -37,9 +38,16 @@ final class UserType extends AbstractType
                     'label_attr' => ['class' => 'switch-custom'],
                 ]
             )
+            ->add('level', null)
             ->add('username', null, [
                 'label' => 'label.username',
             ])
+            ->add('colaborador', CheckboxType::class, [
+                    'label' => 'label.colaborador',
+                    'label_attr' => ['class' => 'switch-custom'],
+                    'required' => false,
+                ]
+            )
             ->add('profile', ProfileType::class)
             ->add('email', null, [
                 'label' => 'label.email',
