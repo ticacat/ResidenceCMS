@@ -12,6 +12,18 @@
 
 {% block body %}
 
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <a href="{{ url('admin_property_edit', {id: property.id}) }}" class="btn btn-primary " style="    z-index: 9999999;
+    position: fixed;
+    right: 25px;
+    top: 94%;">
+            Edit
+        </a>
+
+    {% endif %}
+
     {% for photo in property.photos | slice(0, 1) %}
         {% set image_property =  photo.photo? '/uploads/images/large/' ~  photo.photo : '/images/no-photo.png' %}
 
@@ -117,10 +129,19 @@
                                     {% if property.area %}
 
                                     <li>
-                                        <span class="property-specs">SQ FT</span>
+                                        <span class="property-specs">AREA</span>
                                         <span class="property-specs-number">{{ property.area }}</span>
 
                                     </li>
+                                    {% endif %}
+
+                                    {% if property.parcela %}
+
+                                        <li>
+                                            <span class="property-specs">PARCELA</span>
+                                            <span class="property-specs-number">{{ property.parcela }}</span>
+
+                                        </li>
                                     {% endif %}
                                 </ul>
                             </div>
@@ -131,22 +152,23 @@
 
 
 
-                            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                            <div class="col-md-6 col-lg-3 text-left border-bottom border-top py-3">
                                 <span class="d-inline-block text-black mb-0 caption-text">{{ property.dealType.name }}</span>
                                 <strong class="d-block">{{ property.category.name }}</strong>
                             </div>
 
 
                             {% if property.area %}
-                                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
-                                    <span class="d-inline-block text-black mb-0 caption-text">{{ 'property.area'|trans }}</span>
+                                <div class="col-md-6 col-lg-3 text-left border-bottom border-top py-3">
+                                    <span class="d-inline-block text-black mb-0 caption-text">AREA</span>
                                     <strong class="d-block">{{ property.area }}</strong>
                                 </div>
 
                             {% endif %}
 
+
                             {% if property.bedroomsNumber %}
-                                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                <div class="col-md-6 col-lg-3 text-left border-bottom border-top py-3">
                                     <span class="d-inline-block text-black mb-0 caption-text">{{ 'property.bedrooms'|trans }}</span>
                                     <strong class="d-block">{{ property.bedroomsNumber }}</strong>
                                 </div>
@@ -154,7 +176,7 @@
                             {% endif %}
 
                             {% if property.bathroomsNumber %}
-                                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                <div class="col-md-6 col-lg-3 text-left border-bottom border-top py-3">
                                     <span class="d-inline-block text-black mb-0 caption-text">{{ 'property.bathrooms'|trans }}</span>
                                     <strong class="d-block">{{ property.bathroomsNumber }}</strong>
                                 </div>
@@ -189,19 +211,22 @@
                 </div>
 
                 <div class="col-lg-4 pl-md-5">
+                    <div class="bg-white widget border rounded">
+                        <h3 class="h4 text-black widget-title mb-3">Certificado Energético</h3>
+
+                        {{ include('property/partials/_certificado.html.twig') }}
+
+                    </div>
 
                     <div class="bg-white widget border rounded">
 
-                        <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
+                        <h3 class="h4 text-black widget-title mb-3">Contacte Nos</h3>
 
                         {{ include('property/partials/_site_form_property_info.html.twig') }}
 
                     </div>
 
-                    <div class="bg-white widget border rounded">
-                        <h3 class="h4 text-black widget-title mb-3">Paragraph</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit qui explicabo, libero nam, saepe eligendi. Molestias maiores illum error rerum. Exercitationem ullam saepe, minus, reiciendis ducimus quis. Illo, quisquam, veritatis.</p>
-                    </div>
+
 
                 </div>
             </div>
@@ -212,7 +237,6 @@
 
 
 
-    {{ include('property/partials/_certificado.html.twig') }}
 
 
 

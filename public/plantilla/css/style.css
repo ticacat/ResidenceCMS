@@ -1129,3 +1129,7 @@ a {
 
 .feature .text p {
   color: #888; }
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
