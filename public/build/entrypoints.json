@@ -9,7 +9,7 @@
     "js/admin": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/admin.03f4542b.js"
+        "/build/js/admin.a4308489.js"
       ]
     },
     "js/auth": {
@@ -89,7 +89,7 @@
         "/build/runtime.9a71ee5d.js"
       ],
       "css": [
-        "/build/css/app.8ec8707c.css"
+        "/build/css/app.93cc895f.css"
       ]
     },
     "css/admin": {
