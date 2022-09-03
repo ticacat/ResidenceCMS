@@ -10,6 +10,12 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 
+
+
+@import "aos/dist/aos.css";
+@import "aos/dist/aos.css";
+@import "bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+
 body.body {
   margin-top: 56px !important;
 }

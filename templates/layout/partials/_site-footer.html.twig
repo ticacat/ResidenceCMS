@@ -1,0 +1,99 @@
+<footer class="site-footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="mb-5">
+                    <div class="col-md-12">
+                        <h3 class="footer-heading mb-4">Menú</h3>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <ul class="list-unstyled">
+                            {% for item in site.menu %}
+
+                                {% if (item.url == '/' and locale == item.locale) %}
+                                    {% set url = '/' %}
+                                {% elseif ('https://' not in item.url) %}
+                                    {% set url = '/' ~ item.locale ~ item.url %}
+                                {% else %}
+                                    {% set url = item.url %}
+                                {% endif %}
+
+                                <li >
+                                    <a  href="{{ url }}"
+                                        {% if item.nofollow == true %} rel="nofollow" {% endif %}
+                                        {% if item.newTab == true %} target="_blank" {% endif %}
+                                    >
+                                        {{ item.title }}
+                                    </a>
+                                </li>
+
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-5 mb-lg-0">
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <h3 class="footer-heading mb-4">Zonas</h3>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <ul class="list-unstyled">
+                            {% for city in site.cities %}
+                                <li>
+                                    <a href="{{path('property',{'city': city.id})}}">{{ city.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 mb-5 mb-lg-0">
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <h3 class="footer-heading mb-4">Tipo de Inmuebles</h3>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <ul class="list-unstyled">
+                            {% for fcategory in site.categories %}
+                                <li>
+                                    <a href="{{path('property',{'category': fcategory.id})}}">{{ fcategory.name }}</a>
+
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Contacta con nosotros</h3>
+
+                <div>
+                    <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                    <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                    <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                    <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+                    <p>© {{ "now" | date("Y") }} <a class="text-muted" href="{{ path('property') }}">{{ site.name }}</a>.
+                        {{ site.custom_footer_text | raw }}
+                    </p>
+            </div>
+        </div>
+    </div>
+</footer>

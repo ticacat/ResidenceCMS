@@ -16,7 +16,16 @@
 
         <div class="col-12 col-lg-6 col-md-6 col-sm-auto">
             <div class="form-group row justify-content-end">
+
                 <label for="sort_by" class="col-auto col-form-label">{{ 'label.sort_by'|trans }}:</label>
+                <div class="col-auto">
+
+                    <div class="custom-control custom-switch pt-1">
+                        <input type="checkbox" id="show_slider_homepage" name="show_slider_homepage" class="custom-control-input" {% if searchParams.show_slider_homepage is defined and searchParams.show_slider_homepage in ['true',true,1,'1'] %} checked{% endif %}>
+                        <label class="switch-custom custom-control-label" for="show_slider_homepage">homepage</label>
+                    </div>
+                </div>
+
                 <div class="col-auto">
                     <select class="form-control" id="sort_by" name="sort_by">
                         <option value="id" {% if searchParams.sort_by == 'id' %} selected{% endif %}>
@@ -26,6 +35,7 @@
                             value="priority_number" {% if searchParams.sort_by == 'priority_number' %} selected{% endif %}>
                             {{ 'option.priority'|trans }}
                         </option>
+
                     </select>
                 </div>
 
@@ -47,6 +57,7 @@
                             value="all" {% if searchParams.state == 'all' %} selected{% endif %}>
                             {{ 'option.all'|trans }}
                         </option>
+
                     </select>
                 </div>
             </div>

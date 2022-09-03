@@ -1,0 +1,125 @@
+{% set catEnergy = ['A','B','C','D','E','F','G']%}
+<div class="site-section site-section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="property-energy-class-wrap property-section-wrap" id="property-energy-class-wrap">
+    <div class="block-wrap">
+        <div class="block-title-wrap">
+            <h2>Certificado Energético</h2>
+        </div>
+        <div class="block-content-wrap">
+
+            <ul class="class-energy-list list-unstyled">
+                <li>
+                    <strong>Certificado de eficiencia energética:</strong>
+                    <span>A</span>
+                </li>
+                <li>
+                    <strong>Consumo de Energía:</strong>
+                    <span>16 kWh/m² año</span>
+                </li>
+                <li>
+                    <strong>Emisiones:</strong>
+                    <span>3 kg CO²/m² año</span>
+                </li>
+            </ul>
+            <ul class="class-energy  text-center">
+
+                {% for cat  in catEnergy %}
+                    <li class="class-energy-indicator {{ (property.energyCertificate == cat)? 'class-energy-indicators_active':'' }} " >
+                        <span class="energy-{{cat}}">{{cat}}</span>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+    .class-energy-indicator {
+        list-style-type: none;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+    }
+
+    .class-energy {
+        clear: both;
+        padding:  0 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+
+    .class-energy-indicator span {
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .class-energy-indicator:first-child {
+        background-color: #33a357;
+    }
+    .class-energy-indicator:nth-child(2) {
+        background-color: #79b752;
+    }
+    .class-energy-indicator:nth-child(3) {
+        background-color: #c3d545;
+    }
+    .class-energy-indicator:nth-child(4) {
+        background-color: #fff12c;
+    }
+    .class-energy-indicator:nth-child(5) {
+        background-color: #edb731;
+    }
+    .class-energy-indicator:nth-child(6) {
+        background-color: #d66f2c;
+    }
+    .class-energy-indicator:nth-child(7) {
+        background-color: #cc232a;
+    }
+
+    .class-energy-indicators_active {
+        border: double #0b0b0b;
+    }
+
+
+    .class-energy-indicator:first-child .indicator-energy:before, .class-energy-indicator:nth-child(2) .indicator-energy:before, .class-energy-indicator:nth-child(3) .indicator-energy:before, .class-energy-indicator:nth-child(4) .indicator-energy:before, .class-energy-indicator:nth-child(5) .indicator-energy:before, .class-energy-indicator:nth-child(6) .indicator-energy:before {
+        right: auto;
+        left: 0;
+        border-right: 10px solid transparent;
+    }
+    .indicator-energy {
+        font-size: 13px;
+        line-height: 30px;
+        top: -48px;
+        padding: 0 10px;
+        white-space: nowrap;
+        color: #fff;
+        background-color: #999;
+        position: relative;
+    }
+
+    .indicator-energy:before {
+        bottom: -33px;
+        content: "";
+        border-top: 10px solid #999;
+        position: relative;
+
+    }
+
+</style>

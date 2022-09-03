@@ -35,6 +35,7 @@ final class SettingsService extends AbstractService
      */
     public function updateSettings(array $formData): void
     {
+
         $this->repository->updateSettings($formData);
         $this->addFlash('success', 'message.updated');
     }

@@ -33,14 +33,20 @@ $(document).ready(() => {
     });
 
     // Sorting
-    $('#sort_by, #state').on('change', () => {
+    $('#sort_by, #state, #show_slider_homepage').on('change', () => {
+
+
         let value = $('#sort_by').val();
+        let show_slider_homepage = $('#show_slider_homepage').is(':checked');
         let state = $('#state').val();
         window.location.href =
             window.location.pathname +
             '?sort_by=' +
             value +
             '&state=' +
-            state;
+            state +
+            '&show_slider_homepage=' +
+            show_slider_homepage
+        ;
     });
 });

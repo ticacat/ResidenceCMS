@@ -79,12 +79,38 @@ final class PropertyType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'label.category',
             ])
+            ->add('area', null, [
+                'label' => 'label.area',
+            ])->add('parcela', null, [
+                'label' => 'label.parcela',
+            ])
             ->add('bathrooms_number', null, [
                 'label' => 'label.bathrooms_number',
             ])
             ->add('bedrooms_number', null, [
                 'label' => 'label.bedrooms_number',
             ])
+            ->add('energy_certificate', ChoiceType::class, [
+                'label' => 'label.energy_certificate',
+                'required' => false,
+                'choices' => [
+                    'A' => 'A',
+                    'B' => 'B',
+                    'C' => 'C',
+                    'D' => 'D',
+                    'E' => 'E',
+                    'F' => 'F',
+                    'G' => 'G'
+                ],
+            ])
+            ->add('energy_emission', null, [
+                'label' => 'label.energy_emission',
+            ])
+
+            ->add('energy_consumption', null, [
+                'label' => 'label.energy_consumption',
+            ])
+
 
 
             ->add('address', null, [
@@ -140,7 +166,12 @@ final class PropertyType extends AbstractType
                 'required' => false,
                 'label' => 'label.features',
             ])
-            ->add('property_description', PropertyDescriptionType::class);
+            ->add('property_description', PropertyDescriptionType::class)
+
+
+        ;
+
+
 
         $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber())
             ->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());

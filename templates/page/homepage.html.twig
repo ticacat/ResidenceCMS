@@ -1,0 +1,67 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block description %}{{ page.description }}{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+
+    {{ include('property/partials/_site_home_slider.html.twig' , {'items': properties}) }}
+    {{ include('property/partials/_site_search_form.html.twig' ) }}
+
+    <div class="site-section site-section-sm bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="site-section-title">
+                        <h2>ÚLTIMAS PROPIEDADES AGREGADAS</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+
+                {% for property in lastproperties %}
+                    {{ include('property/partials/_item_property_list.html.twig', {'property': property }) }}
+                {% else %}
+                    <div class="col-sm-12">
+                        {{ 'no_items_found' | trans }}
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+
+    {{ include('page/partials/_site_servicios.html.twig' ) }}
+
+
+
+
+
+    <div class="site-section site-section-sm bg-primary">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2 class="text-white">NUESTRAS PROPIEDADES</h2>
+                    <p class="lead text-white-5">Casas de lujo y alto standing en venta en Costa Brava: casas, villas y chalets.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <a href="{{ path('property')}}" class="btn btn-outline-primary btn-block py-3 btn-lg">Ver Propiedades</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+
+
+
+{% endblock %}

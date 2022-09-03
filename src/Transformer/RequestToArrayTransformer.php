@@ -21,6 +21,16 @@ final class RequestToArrayTransformer
         $params['state'] = $request->query->get('state', 'published');
         $params['page'] = $request->query->getInt('page', 1);
 
+
+        $show_slider_homepage = $request->query->get('show_slider_homepage', false);
+        if(!in_array($show_slider_homepage,[0,false,'false','0','']))
+        {
+            $params['show_slider_homepage'] = 1;
+        }
+        $params['range_price']  = $request->query->get('range_price','0-10000000');
+
+
+
         return $params;
     }
 }

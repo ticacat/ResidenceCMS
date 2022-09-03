@@ -14,12 +14,18 @@ security:
             entity: { class: App\Entity\User, property: username }
 
     # https://symfony.com/doc/current/security.html#initial-security-yml-setup-authentication
+    # config/packages/security.yaml
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+
         main:
+            login_link:
+                check_route: login_check
+                signature_properties: [ 'id' ]
+
             lazy: true
             login_throttling:
                 max_attempts: 5
@@ -67,6 +73,7 @@ security:
     # additional security lives in the controllers
     - { path: '^/(%app_locales%)/admin', roles: ROLE_ADMIN }
     - { path: '^/(%app_locales%)/user', roles: ROLE_USER }
+    - { path: '^/(%app_locales%)/customer', roles: ROLE_CLIENTE }
 
 when@test:
     # this configuration simplifies testing URLs protected by the security mechanism

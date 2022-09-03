@@ -1,0 +1,33 @@
+
+
+<div class="slide-one-item home-slider owl-carousel mb-5">
+
+    {% for property  in items %}
+
+        {% set image_slider =  property.photos|length > 0 ?  property.photos[0]: asset('/images/transparent.png')  %}
+
+        <div class="site-blocks-cover" style=" background-image: url({{ '/uploads/images/full/' ~ image_slider.photo}});" data-aos="fade" data-stellar-background-ratio="0.2">
+
+            <div class="text">
+                <h2>{{property.propertyDescription.title}}</h2>
+                <p class="location"><span class="property-icon icon-room"></span> {{property.city.title}}</p>
+                {% if property.price != '' %}
+                    <p class="mb-2"><strong>
+                         {{ property.price|format_currency('EUR', {fraction_digit: 0}) }}
+                        {% if property.priceType != '' %}
+                            / {{ property.priceType }}
+                        {% endif %}
+                        </strong></p>
+                {% endif %}
+
+
+                <p class="mb-0"><a href="{{ path('property_show', {
+                        'id':  property.id,
+                        'citySlug': property.city.slug,
+                        'slug': property.slug}) }}" class="text-uppercase small letter-spacing-1 font-weight-bold">More Details</a></p>
+
+            </div>
+        </div>
+    {% endfor %}
+
+</div>

@@ -23,7 +23,10 @@ final class PropertyController extends BaseController
     public function index(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
         $searchParams = $transformer->transform($request);
+
+
         $properties = $repository->findByFilter($searchParams);
+
 
         return $this->render('admin/property/index.html.twig', [
             'site' => $this->site($request),

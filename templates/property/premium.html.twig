@@ -1,0 +1,113 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ site.meta_title }}{{ searchParams.page|page }}{% endblock %}
+
+{% block description %}{{ site.meta_description }}{{ searchParams.page|page }}{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <a href="{{ url('admin_property_new') }}" class="btn btn-primary float">
+            <i class="fas fa-plus float-icon"></i>
+        </a>
+
+    {% elseif is_granted('ROLE_USER')  and app.user.colaborador %}
+
+        <a href="{{ url('user_property_new') }}" class="btn btn-primary float">
+            <i class="fas fa-plus float-icon"></i>
+        </a>
+
+    {% endif %}
+
+
+    {% if app.user is not null %}
+
+
+    {{ include('property/partials/_site_search_form.html.twig' ) }}
+
+
+    <div class="site-section site-section-sm bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="site-section-title">
+                        <h2>Propiedades Premium</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+
+                {% for property in properties %}
+                    {{ include('property/partials/_item_property_list.html.twig' ) }}
+                {% else %}
+                    <div class="col-sm-12">
+                        {{ 'no_items_found' | trans }}
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="row justify-content-center">
+
+                {{ knp_pagination_render(properties) }}
+
+        </div>
+        </div>
+    </div>
+
+
+    {% else %}
+
+
+        <div class="site-section site-section-sm bg-light">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="site-section-title">
+                            <h2>Acceso Limitado a usuarios registrados</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                        <p>
+
+                        </p>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    {% endif %}
+
+
+
+
+
+
+
+
+    <style>
+        .float {
+            border-radius: 50px;
+            box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%), 0 3px 5px -1px rgb(0 0 0 / 20%);
+            height: 60px;
+            position: fixed;
+            right: 40px;
+            width: 60px;
+            z-index: 1;
+            top: 85%;
+        }
+    </style>
+
+{% endblock %}
+

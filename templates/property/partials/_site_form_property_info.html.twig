@@ -1,0 +1,45 @@
+
+<form action="" class="form-contact-agent">
+
+    <input type="hidden" name="idproperty" value="{{property.id}}" class="form-control">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" class="form-control" placeholder="Con prefijo del pais +34...">
+    </div>
+
+    <div class="form-group form-group-textarea">
+        <textarea class="form-control form-control-sm mb-3" rows="5" placeholder="Small textarea">Hola, estoy interesado en este inmueble y me gustaría hacer una visita [{{property.propertyDescription.title}}]</textarea>
+    </div>
+    <div class="form-group">
+        <label class="control control--checkbox m-0 hz-terms-of-use">
+            <input type="checkbox" name="privacy_policy" class="swi">He leido y acepto <a target="_blank" href="/politica-privacidad/">la política de privacidad</a>
+            <span class="control__indicator"></span>
+        </label>
+    </div>
+    <div class="form-group">
+        <input type="submit" id="phone" class="btn btn-primary btn-block" value="Enviar Mensage">
+    </div>
+    <div class="form-group">
+            <a  role="button" href="tel:{{ site.telefon }}" class="btn btn-black col-md-6 d-inlines">
+                <span class="">Llamar</span>
+            </a>
+            <a  role="button" target="_blank" href="https://api.whatsapp.com/send?phone={{site.whatsapp}};text=Hola, estoy interesado en este inmueble y me gustaría hacer una visita [{{property.id ~ property.propertyDescription.title}}] "
+                class="btn btn-success col-md-6 d-inline">
+                <i class="fa fa-whatsapp mr-1"></i> WhatsApp
+            </a>
+    </div>
+
+
+
+
+
+</form>
+

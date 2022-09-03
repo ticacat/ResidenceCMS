@@ -41,6 +41,11 @@ final class MainSettingsType extends AbstractType
                 'label' => 'label.meta_description',
                 'constraints' => [new Length(['min' => 8])],
             ])
+
+            ->add('social_links', TextareaType::class, [
+                'label' => 'label.social_links',
+                'constraints' => [new Length(['min' => 8])],
+            ])
             ->add('custom_code', TextareaType::class, [
                 'required' => false,
                 'label' => 'label.settings.code',
@@ -89,7 +94,20 @@ final class MainSettingsType extends AbstractType
                     ],
                     'label' => 'label.settings.anyone_can_register',
                 ]
-            );
+            )
+            ->add('telefon', null, [
+                'label' => 'label.settings.telefon'
+            ])
+            ->add('email', null, [
+                'label' => 'label.settings.email'
+            ])
+            ->add('whatsapp', null, [
+                'label' => 'label.settings.whatsapp'
+            ])
+
+        ;
+
+
     }
 
     /**

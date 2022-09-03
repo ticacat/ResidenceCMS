@@ -1,0 +1,64 @@
+<div class="col-md-6 col-lg-4 mb-4">
+    <a href="{{ path('property_show', {
+        'id':  property.id,
+        'citySlug': property.city.slug,
+        'slug': property.slug}) }}" class="prop-entry d-block">
+        <figure>
+
+            {% for photo in property.photos | slice(0, 1) %}
+
+                <img class="img-fluid lazyload"
+                     src="/uploads/images/small/{{ photo.photo }}"
+                     alt="{{ property.address }}"
+                     title="{{ property.address }}"/>
+
+            {% else %}
+
+                <img class="img-fluid border-bottom" src="{{ asset('/images/no-photo.png') }}"
+                     alt="{{ property.address }}"
+                     title="{{ property.address }}"/>
+
+            {% endfor %}
+
+
+        </figure>
+        <div class="prop-text">
+            <div class="inner">
+                {% if property.price != '' %}
+                    <span class="price rounded">
+                                    {{ property.price|format_currency('EUR', {fraction_digit: 0}) }}
+                        {% if property.priceType != '' %}
+                            / {{ property.priceType }}
+                        {% endif %}
+                    </span>
+                {% endif %}
+                <h3 class="title"> {{ property.propertyDescription.title }}</h3>
+                <p class="location">{{ property.address }}</p>
+            </div>
+
+            <div class="prop-more-info">
+                <div class="inner d-flex">
+                    {% if property.area %}
+                        <div class="col">
+                            <span class="attribute">{{ 'property.area'|trans }}:</span><strong> {{ property.area }}</strong>
+                        </div>
+                    {% endif %}
+
+                    {% if property.bedroomsNumber %}
+                        <div class="col">
+                            <span class="attribute">{{ 'property.bedrooms'|trans }}:</span><strong> {{ property.bedroomsNumber }}</strong>
+                        </div>
+                    {% endif %}
+
+                    {% if property.bathroomsNumber %}
+                        <div class="col">
+                            <span class="attribute">{{ 'property.bathroomsNumber'|trans }}:</span><strong> {{ property.bathroomsNumber }}</strong>
+                        </div>
+                    {% endif %}
+
+                  
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

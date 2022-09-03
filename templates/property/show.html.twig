@@ -4,9 +4,7 @@
 {% block description %}{{ property.propertyDescription.metaDescription }}{% endblock %}
 
 {% block stylesheets %}
-
-    {{ encore_entry_link_tags('css/detail') }}
-    {{ encore_entry_link_tags('css/ekko-lightbox') }}
+    {{parent()}}
 
 {% endblock %}
 
@@ -14,62 +12,211 @@
 
 {% block body %}
 
-    {% if is_granted('ROLE_ADMIN') %}
+    {% for photo in property.photos | slice(0, 1) %}
+        {% set image_property =  photo.photo? '/uploads/images/large/' ~  photo.photo : '/images/no-photo.png' %}
 
-        <a href="{{ url('admin_property_edit', {id: property.id}) }}" class="btn btn-primary float">
-            <i class="fas fa-pen float-icon"></i>
-        </a>
+        <div class="site-blocks-cover overlay" style="background-image: url({{ image_property }});" data-aos="fade" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-md-10">
+                        <span class="d-inline-block text-white px-3 mb-3 property-offer-type rounded">Property Details of</span>
+                        <h1 class="mb-2">{{ property.propertyDescription.title|upper }}</h1>
+                        <p class="mb-5">
+                            <strong class="h2 text-success font-weight-bold">
+                                {% if property.price != '' %}
+                                         {{ property.price|format_currency('EUR', {fraction_digit: 0}) }}
+                                        {% if property.priceType != '' %}
+                                            / {{ property.priceType }}
+                                        {% endif %}
+                                {% endif %}
 
-    {% endif %}
-
-    <br>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card full-xs mb-4">
-
-                {{ include('property/partials/_slider.html.twig') }}
-
-                <div class="card-body">
-
-                    <h4 class="card-title">{{ property.propertyDescription.title }}</h4>
-
-                    <p class="address">{{ property.address }}</p>
-
-                    {{ include('property/partials/_overview.html.twig') }}
-
-                    {{ property.propertyDescription.content | raw }}
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        {% for feature in property.features %}
-                            <div class="col-lg-4 col-md-6 col-sm-6 icon-green">
-                                {{ feature.icon|default('<i class="fas fa-check"></i>')|raw }}
-                                {{ feature.name }}
-                            </div>
-                        {% endfor %}
+                            </strong>
+                        </p>
                     </div>
-
-                    <div id="map"
-                         data-balloonContent="{{ property.propertyDescription.title }}"
-                         data-hintContent="{{ property.category.name }}"
-                         data-latitude="{{ property.latitude }}"
-                         data-longitude="{{ property.longitude }}"
-                    ></div>
-
                 </div>
             </div>
         </div>
 
-        <!-- Sidebar -->
-        <div class="col-md-4">
+    {% else %}
 
-            {{ include('property/partials/_contact_widget.html.twig') }}
-            {{ include('property/partials/_search_widget.html.twig') }}
+        <div class="site-blocks-cover overlay" style="background-image: url({{ asset('/images/no-photo.png') }});" data-aos="fade" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-md-10">
+                        <span class="d-inline-block text-white px-3 mb-3 property-offer-type rounded">Property Details of</span>
+                        <h1 class="mb-2">{{ property.propertyDescription.title|upper }}</h1>
+                        <p class="mb-5">
+                            <strong class="h2 text-success font-weight-bold">
+                                {% if property.price != '' %}
+                                    {{ property.price|format_currency('EUR', {fraction_digit: 0}) }}
+                                    {% if property.priceType != '' %}
+                                        / {{ property.priceType }}
+                                    {% endif %}
+                                {% endif %}
 
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
+    {% endfor %}
+
+
+
+
+
+    <div class="site-section site-section-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" style="margin-top: -150px;">
+                    <div class="mb-5">
+                        <div class="slide-one-item home-slider owl-carousel">
+
+                            {% for sliderFoto in property.photos %}
+
+                                <div><img src="/uploads/images/large/{{ sliderFoto.photo }}" alt="Image" class="img-fluid"></div>
+
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="bg-white">
+                        <div class="row mb-5">
+                            {% if property.price != '' %}
+                            <div class="col-md-6">
+                                <strong class="text-success h1 mb-3">
+                                    {{ property.price|format_currency('EUR', {fraction_digit: 0}) }}
+                                    {% if property.priceType != '' %}
+                                        / {{ property.priceType }}
+                                    {% endif %}
+                                </strong>
+                            </div>
+                            {% endif %}
+
+                            <div class="col-md-6">
+                                <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
+                                    {% if property.bedroomsNumber %}
+
+
+                                    <li>
+                                        <span class="property-specs">Beds</span>
+                                        <span class="property-specs-number">{{ property.bedroomsNumber }}</span>
+
+                                    </li>
+                                    {% endif %}
+                                    {% if property.bathroomsNumber %}
+
+                                    <li>
+                                        <span class="property-specs">Baths</span>
+                                        <span class="property-specs-number">{{ property.bathroomsNumber }} </span>
+
+                                    </li>
+                                    {% endif %}
+                                    {% if property.area %}
+
+                                    <li>
+                                        <span class="property-specs">SQ FT</span>
+                                        <span class="property-specs-number">{{ property.area }}</span>
+
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+
+
+
+
+                            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                <span class="d-inline-block text-black mb-0 caption-text">{{ property.dealType.name }}</span>
+                                <strong class="d-block">{{ property.category.name }}</strong>
+                            </div>
+
+
+                            {% if property.area %}
+                                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                    <span class="d-inline-block text-black mb-0 caption-text">{{ 'property.area'|trans }}</span>
+                                    <strong class="d-block">{{ property.area }}</strong>
+                                </div>
+
+                            {% endif %}
+
+                            {% if property.bedroomsNumber %}
+                                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                    <span class="d-inline-block text-black mb-0 caption-text">{{ 'property.bedrooms'|trans }}</span>
+                                    <strong class="d-block">{{ property.bedroomsNumber }}</strong>
+                                </div>
+
+                            {% endif %}
+
+                            {% if property.bathroomsNumber %}
+                                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                    <span class="d-inline-block text-black mb-0 caption-text">{{ 'property.bathrooms'|trans }}</span>
+                                    <strong class="d-block">{{ property.bathroomsNumber }}</strong>
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+
+                        <h2 class="h4 text-black">Mas Información</h2>
+                        <p>
+                            {{ property.propertyDescription.content|raw  }}
+                        </p>
+
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <h2 class="h4 text-black mb-3">Property Gallery</h2>
+                            </div>
+
+                            {% for foto in property.photos %}
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                    <a href="/uploads/images/small/{{ foto.photo }}" class="image-popup gal-item"><img src="/uploads/images/large/{{ foto.photo }}" alt="Image" class="img-fluid"></a>
+                                </div>
+
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 pl-md-5">
+
+                    <div class="bg-white widget border rounded">
+
+                        <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
+
+                        {{ include('property/partials/_site_form_property_info.html.twig') }}
+
+                    </div>
+
+                    <div class="bg-white widget border rounded">
+                        <h3 class="h4 text-black widget-title mb-3">Paragraph</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit qui explicabo, libero nam, saepe eligendi. Molestias maiores illum error rerum. Exercitationem ullam saepe, minus, reiciendis ducimus quis. Illo, quisquam, veritatis.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+    {{ include('property/partials/_certificado.html.twig') }}
+
+
+
+
 
     {% if properties %}
         {{ include('property/partials/_similar_properties.html.twig') }}
@@ -79,14 +226,10 @@
 
 {% block javascripts %}
 
-    {{ encore_entry_script_tags('js/ekko-lightbox') }}
-    <script>
-        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-    </script>
+{{ parent()}}
 
+
+{#
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
@@ -106,7 +249,7 @@
 
             {% endif %}
 
-            <script> 
+            <script>
             const $map = $('#map');
 const latitude = $map.attr('data-latitude');
 const longitude = $map.attr('data-longitude');
@@ -119,14 +262,14 @@ function initMap() {
     let map_center = { lat: {{property.latitude}}, lng:  {{property.longitude}}};
     let infoWindow = new google.maps.InfoWindow();
     let map = new google.maps.Map(
-        document.getElementById("map"), 
+        document.getElementById("map"),
         {
             zoom: 4,
             center: map_center,
         });
 
 
-    
+
         let marcador =  new google.maps.Marker({
                 position: map_center,
                 map,
@@ -149,9 +292,9 @@ $map.css({
     height: '280px',
     'padding-top': '20px'
 });
-            
+
             </script>
 
     {% endif %}
-
+#}
 {% endblock %}

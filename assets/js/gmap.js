@@ -8,15 +8,9 @@ const balloonContent = $map.attr('data-balloonContent');
 function initMap() {
     // Creating the map.
 
-
-    const map_center = { lat: latitude, lng:  longitude};
-
-
-    const infoWindow = new google.maps.InfoWindow();
-
-
-
-         let map = new google.maps.Map(
+    let map_center = { lat: latitude, lng:  longitude};
+    let infoWindow = new google.maps.InfoWindow();
+    let map = new google.maps.Map(
         document.getElementById("map"), 
         {
             zoom: 13,
@@ -24,7 +18,7 @@ function initMap() {
         });
 
 
-        let marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
             map_center,
             map,
             title: balloonContent,
@@ -32,12 +26,12 @@ function initMap() {
             optimized: false,
             });
 
-            // Add a click listener for each marker, and set up the info window.
-            marker.addListener("click", () => {
-            infoWindow.close();
-            infoWindow.setContent(marker.getTitle());
-            infoWindow.open(marker.getMap(), marker);
-            });
+    // Add a click listener for each marker, and set up the info window.
+    marker.addListener("click", () => {
+    infoWindow.close();
+    infoWindow.setContent(marker.getTitle());
+    infoWindow.open(marker.getMap(), marker);
+    });
 
 }
 

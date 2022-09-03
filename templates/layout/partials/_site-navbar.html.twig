@@ -1,0 +1,180 @@
+<div class="site-wrap">
+
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <div class="border-bottom bg-white top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-6 col-md-6">
+                    <p class="mb-0">
+
+                        {% if site.telefon is defined and site.telefon is not empty %}
+                            <a href="tel:{{site.telefon}}" class="mr-3"><span class="text-black fa fa-phone"></span> <span class="d-none d-md-inline-block ml-2">{{site.telefon}}</span></a>
+                        {% endif %}
+
+                        {% if site.email is defined and site.email is not empty %}
+                            <a href="mailto:{{site.email}}"><span class="text-black fa fa-envelope"></span> <span class="d-none d-md-inline-block ml-2">{{site.email}}</span></a>
+                        {% endif %}
+
+                 </p>
+                </div>
+                <div class="col-6 col-md-6 text-right">
+                    {% if site.social_links is defined and site.social_links is not empty %}
+                       {% set social_links = site.social_links|split("\n") %}
+
+                        {% for link in social_links %}
+                            {% set link_params = link|split("::") %}
+                            <a href="{{link_params[1]|raw}}" class="mr-3" target="_blank"><span class="text-black icon-{{link_params[0]}}"></span></a>
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="site-navbar">
+        <div class="container py-1">
+            <div class="row align-items-center">
+                <div class="col-8 col-md-8 col-lg-4">
+                    {% if show_back_button|default(false) %}
+                        <a class="navbar-brand" href="javascript: history.back()">
+                            <i class="fas fa-arrow-left"></i> {{ 'menu.back'|trans }}
+                        </a>
+                    {% else %}
+                        <a class="navbar-brand h5 text-uppercase text-black" href="{{ path('homepage') }}">
+                            {% if site.logo_image == '' %}
+                                <strong>{{site.name}}<span class="text-danger">.</span>COM</strong>
+                            {% else %}
+                                <img src="{{ asset('uploads/images/full/' ~ site.logo_image) }}" alt="{{ site.name }}">
+                            {% endif %}
+                        </a>
+                    {% endif %}
+                </div>
+
+
+
+
+
+
+                <div class="col-4 col-md-4 col-lg-8">
+                    <nav class="site-navigation text-right text-md-right" role="navigation">
+
+                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+
+
+
+
+
+
+                        <ul class="site-menu js-clone-nav d-none d-lg-block">
+
+                            {% for item in site.menu %}
+
+                                {% if (item.url == '/' and locale == item.locale) %}
+                                    {% set url = '/' %}
+                                {% elseif ('https://' not in item.url) %}
+                                    {% set url = '/' ~ item.locale ~ item.url %}
+                                {% else %}
+                                    {% set url = item.url %}
+                                {% endif %}
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url }}"
+                                        {% if item.nofollow == true %} rel="nofollow" {% endif %}
+                                        {% if item.newTab == true %} target="_blank" {% endif %}
+                                    >
+                                        {{ item.title }}
+                                    </a>
+                                </li>
+
+                            {% endfor %}
+
+
+
+                            {{ include('layout/partials/_locale_switcher.html.twig', {site: site}) }}
+
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="has-children  "
+                                    >
+                                    <a href="#"  >
+                                        {{ 'menu.admin'|trans }}
+                                    </a>
+                                    <ul class="dropdown">
+                                        <li>
+                                        <a class="dropdown-item" href="{{ path('admin_dashboard') }}">
+                                            {{ 'dashboard'|trans }}
+                                        </a>
+                                        </li>
+                                        <li>
+                                        <a class="dropdown-item" href="{{ path('user_property') }}">
+                                            {{ 'menu.account'|trans }}
+                                        </a>
+
+                                        </li>
+                                        <li>
+                                        <a class="dropdown-item" href="{{ path('admin_user_edit', {id: app.user.id}) }}">
+                                            {{ 'menu.edit_profile'|trans }}
+                                        </a>
+
+                                        </li>
+                                        <div class="dropdown-divider"></div>
+
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('security_logout') }}">
+                                                {{ 'menu.logout'|trans }}
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            {% elseif is_granted('ROLE_USER') %}
+
+                                {% if app.user.colaborador %}
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('user_property') }}">{{ 'menu.account'|trans }}</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a class="dropdown-item" href="{{ path('security_logout') }}">
+                                            {{ 'menu.logout'|trans }}
+                                        </a>
+
+                                    </li>
+                                {% endif %}
+
+
+
+
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('security_login') }}">{{ 'menu.login'|trans }}</a>
+                                </li>
+
+                                {% if '1' == site.anyone_can_register %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('register') }}">{{ 'menu.register'|trans }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+
+                    </nav>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 default_route:
     path: /
-    controller: App\Controller\PropertyController::search
+    controller: App\Controller\PageController::homepage
     defaults:
-      path: /en
+      path: /es
       permanent: true

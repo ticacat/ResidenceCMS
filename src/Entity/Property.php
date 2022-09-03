@@ -47,6 +47,24 @@ class Property
      * @ORM\Column(type="smallint", nullable=true)
      */
     private $bathrooms_number;
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $area;
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $parcela;
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $year;
+
+
+
+
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -82,6 +100,22 @@ class Property
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $price_type;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $energy_certificate;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $energy_consumption;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $energy_emission;
+
+
+
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -108,6 +142,12 @@ class Property
      * @ORM\Column(type="integer")
      */
     private $priority_number;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private ?string $observations;
+
 
     /**
      * @ORM\OneToOne(targetEntity=PropertyDescription::class, mappedBy="property", cascade={"persist", "remove"})
@@ -361,6 +401,121 @@ class Property
     {
         return $this->propertyDescription;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    /**
+     * @param mixed $area
+     */
+    public function setArea($area): void
+    {
+        $this->area = $area;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnergyCertificate()
+    {
+        return $this->energy_certificate;
+    }
+
+    /**
+     * @param mixed $energy_certificate
+     */
+    public function setEnergyCertificate($energy_certificate): void
+    {
+        $this->energy_certificate = $energy_certificate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnergyConsumption()
+    {
+        return $this->energy_consumption;
+    }
+
+    /**
+     * @param mixed $energy_consumption
+     */
+    public function setEnergyConsumption($energy_consumption): void
+    {
+        $this->energy_consumption = $energy_consumption;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnergyEmission()
+    {
+        return $this->energy_emission;
+    }
+
+    /**
+     * @param mixed $energy_emission
+     */
+    public function setEnergyEmission($energy_emission): void
+    {
+        $this->energy_emission = $energy_emission;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParcela()
+    {
+        return $this->parcela;
+    }
+
+    /**
+     * @param mixed $parcela
+     */
+    public function setParcela($parcela): void
+    {
+        $this->parcela = $parcela;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param mixed $year
+     */
+    public function setYear($year): void
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getObservations(): ?string
+    {
+        return $this->observations;
+    }
+
+    /**
+     * @param string|null $observations
+     */
+    public function setObservations(?string $observations): void
+    {
+        $this->observations = $observations;
+    }
+
+
+
 
     public function setPropertyDescription(PropertyDescription $propertyDescription): self
     {

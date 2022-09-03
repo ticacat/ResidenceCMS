@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Dto\ContactDto;
 use App\Entity\Property;
 use App\Repository\FilterRepository;
 use App\Repository\PropertyRepository;
@@ -18,22 +19,44 @@ use Symfony\Component\Routing\Annotation\Route;
 final class PropertyController extends BaseController
 {
     /**
-     * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
+     * @Route("/search", defaults={"page": "1"}, methods={"GET"}, name="property")
+     * @Route("/premium", defaults={"page": "1"}, methods={"GET"}, name="property_premium")
      */
     public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
+
+
         $searchParams = $transformer->transform($request);
-
         $searchParams['level'] = $this->getUser()? $this->getUser()->getLevel(): 0;
-        $properties = $repository->findByFilter($searchParams);
 
-        return $this->render('property/index.html.twig',
-            [
-                'site' => $this->site($request),
-                'properties' => $properties,
-                'searchParams' => $searchParams,
-            ]
-        );
+        if($request->attributes->get('_route') == 'property_premium')
+        {
+
+            $properties = $repository->findByFilterWithPremium($searchParams,true);
+
+            return $this->render('property/premium.html.twig',
+                [
+                    'site' => $this->site($request),
+                    'properties' => $properties,
+                    'searchParams' => $searchParams
+                ]
+            );
+        }else{
+
+            $properties = $repository->findByFilterWithPremium($searchParams);
+
+            return $this->render('property/index.html.twig',
+                [
+                    'site' => $this->site($request),
+                    'properties' => $properties,
+                    'searchParams' => $searchParams,
+                ]
+            );
+
+        }
+
+
+
     }
 
     /**

@@ -35,36 +35,117 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
-    {{ encore_entry_link_tags('css/app') }}
-    {% block stylesheets %}{% endblock %}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/mediaelementplayer.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/css/fl-bigmug-line.css">
+
+
+    <link rel="stylesheet" href="/css/aos.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+
+
+
+    <script src="/tarteaucitron/tarteaucitron.js"></script>
+
+    <script type="text/javascript">
+        tarteaucitron.init({
+            "privacyUrl": "/legal/privacy", /* Privacy policy url */
+            "bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
+
+            "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+            "cookieName": "tarteaucitron", /* Cookie name */
+
+            "orientation": "middle", /* Banner position (top - bottom) */
+
+            "groupServices": false, /* Group services by category */
+            "serviceDefaultState": "wait", /* Default state (true - wait - false) */
+
+            "showAlertSmall": false, /* Show the small banner on bottom right */
+            "cookieslist": true, /* Show the cookie list */
+
+            "closePopup": false, /* Show a close X on the banner */
+
+            "showIcon": true, /* Show cookie icon to manage cookies */
+            //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+            "iconPosition": "BottomLeft", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+            "adblocker": false, /* Show a Warning if an adblocker is detected */
+
+            "DenyAllCta" : true, /* Show the deny all button */
+            "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+            "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+
+            "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+            "removeCredit": false, /* Remove credit link */
+            "moreInfoLink": true, /* Show more info link */
+
+            "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+            "useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+
+            "cookieDomain": ".inmobrava.com", /* Shared cookie for multisite */
+
+            "readmoreLink": "", /* Change the default readmore link */
+
+            "mandatory": true, /* Show a message about mandatory cookies */
+            "mandatoryCta": true /* Show the disabled accept button when mandatory on */
+        });
+    </script>
+    {% block stylesheets %}
+
+    {% endblock %}
+
 </head>
-<body{% if site.fixed_top_navbar == '1' %} class="body"{% endif %}>
+<body{% if site.fixed_top_navbar == '1' %} class=""{% endif %}>
 
-{{ include('layout/partials/_navbar.html.twig') }}
-
+{{ include('layout/partials/_site-navbar.html.twig') }}
 {% block header %}{% endblock %}
+{{ include('common/_flash_messages.html.twig') }}
 
-<div class="container">
 
-    {{ include('common/_flash_messages.html.twig') }}
+{% block body %}{% endblock %}
 
-    {% block body %}{% endblock %}
 
-</div>
 
-<div class="container text-muted">
-    <p>© {{ "now" | date("Y") }} <a class="text-muted" href="{{ path('property') }}">{{ site.name }}</a>.
-        {{ site.custom_footer_text | raw }}
-    </p>
-</div>
+
+{{ include('layout/partials/_site-footer.html.twig') }}
 
 <!-- Scripts -->
-{{ encore_entry_script_tags('js/app') }}
+{#{ encore_entry_script_tags('js/app') }#}
+
+
+{% block javascripts %}
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/mediaelement-and-player.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/bootstrap-datepicker.min.js"></script>
+    <script src="/js/aos.js"></script>
+
+    <script src="/js/main.js"></script>
+
+{% endblock %}
 {% if app.user %}
     {{ encore_entry_script_tags('js/auth') }}
 {% endif %}
-
-{% block javascripts %}{% endblock %}
-
 </body>
 </html>
