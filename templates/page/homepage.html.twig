@@ -1,8 +1,8 @@
 {% extends 'layout/base.html.twig' %}
 
-{% block title %}{{ page.title }}{% endblock %}
+{% block title %}{{ page.title is defined ?page.title:site.title }}{% endblock %}
 
-{% block description %}{{ page.description }}{% endblock %}
+{% block description %}{{ page.description  is defined?page.description:site.meta_description  }}{% endblock %}
 
 {% block header %}
 
