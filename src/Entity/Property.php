@@ -144,6 +144,14 @@ class Property
     private $priority_number;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $property_status;
+
+
+
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private ?string $observations;
@@ -507,11 +515,29 @@ class Property
     }
 
     /**
-     * @param string|null $observations
+     * @return mixed
      */
-    public function setObservations(?string $observations): void
+    public function getPropertyStatus()
     {
-        $this->observations = $observations;
+        return $this->property_status;
+    }
+
+    /**
+     * @param mixed $property_status
+     */
+    public function setPropertyStatus($property_status): void
+    {
+        $this->property_status = $property_status;
+    }
+
+
+
+    /**
+     * @param mixed $priority_status
+     */
+    public function setPriorityStatus($priority_status): void
+    {
+        $this->priority_status = $priority_status;
     }
 
 

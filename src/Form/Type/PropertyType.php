@@ -167,8 +167,14 @@ final class PropertyType extends AbstractType
                 'label' => 'label.features',
             ])
             ->add('property_description', PropertyDescriptionType::class)
-
-
+            ->add('property_status', ChoiceType::class, [
+                'label' => 'label.priority_status',
+                'required' => false,
+                'choices' => [
+                    'reservado' => 'reservado',
+                    'vendido' => 'vendido'
+                ],
+            ])
         ;
 
 

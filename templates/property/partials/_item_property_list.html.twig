@@ -4,6 +4,25 @@
 
         <div class="property-box-img">
 
+
+            {% if property.propertyStatus is empty %}
+                <div class="label badge bg-success p-2">
+                    EN {{ property.dealType.name}}
+                </div>
+            {% elseif property.propertyStatus == 'reservado' %}
+                <div class="label badge bg-warning p-2">
+                    {{ property.propertyStatus | upper}}
+                </div>
+            {% elseif property.propertyStatus == 'vendido' %}
+                <div class="label badge bg-danger p-2">
+                    {{ property.propertyStatus | upper}}
+                </div>
+            {% endif %}
+
+
+
+
+
             <a href="{{ path('property_show', {
                 'id':  property.id,
                 'citySlug': property.city.slug,
