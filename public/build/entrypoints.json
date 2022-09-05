@@ -84,12 +84,18 @@
         "/build/js/password.35b6c662.js"
       ]
     },
+    "js/main": {
+      "js": [
+        "/build/runtime.9a71ee5d.js",
+        "/build/js/main.090b8f41.js"
+      ]
+    },
     "css/app": {
       "js": [
         "/build/runtime.9a71ee5d.js"
       ],
       "css": [
-        "/build/css/app.93cc895f.css"
+        "/build/css/app.0b6f2fe7.css"
       ]
     },
     "css/admin": {
@@ -138,6 +144,14 @@
       ],
       "css": [
         "/build/css/select2.3f146cf8.css"
+      ]
+    },
+    "css/style": {
+      "js": [
+        "/build/runtime.9a71ee5d.js"
+      ],
+      "css": [
+        "/build/css/style.09313e6f.css"
       ]
     }
   }

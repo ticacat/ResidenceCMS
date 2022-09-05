@@ -31,6 +31,7 @@ Encore
     .addEntry('js/page', './assets/js/page.js')
     .addEntry('js/user', './assets/js/user/user.js')
     .addEntry('js/password', './assets/js/user/password/password.js')
+    .addEntry('js/main', './public/js/main.js')
 
 
     // will require an extra script tag for runtime.js
@@ -72,6 +73,8 @@ Encore
     .addStyleEntry('css/detail', ['./assets/styles/detail.scss'])
     .addStyleEntry('css/photo', ['./assets/styles/photo.scss'])
     .addStyleEntry('css/select2', ['./assets/styles/select2.scss'])
+    .addStyleEntry('css/style', ['./public/css/style.css'])
+
     //.enableIntegrityHashes()
     .configureBabel(null, {
         useBuiltIns: 'usage',
@@ -80,4 +83,7 @@ Encore
 
 ;
 
-module.exports = Encore.getWebpackConfig();
+
+
+module.exports =Encore.getWebpackConfig();
+

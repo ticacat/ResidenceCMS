@@ -52,7 +52,7 @@
 
     <link rel="stylesheet" href="/css/aos.css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    {{ encore_entry_link_tags('css/style') }}
 
 
 
@@ -139,7 +139,8 @@
     <script src="/js/jquery.magnific-popup.min.js"></script>
     <script src="/js/bootstrap-datepicker.min.js"></script>
     <script src="/js/aos.js"></script>
-    <script src="/js/main.js"></script>
+    {{ encore_entry_script_tags('js/main') }}
+
 
 {% endblock %}
 {% if app.user %}
