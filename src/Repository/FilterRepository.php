@@ -33,11 +33,13 @@ final class FilterRepository extends PropertyRepository
         }
 
 
-        if (isset($params['range_price'])) {
-            list($min,$max) = explode('-',$params['range_price']);
+        if (isset($params['minprice']) || isset($params['maxprice'])) {
+
+
+
             $qb->andWhere(' p.price BETWEEN :minvalue AND :maxvalue ')
-                ->setParameter('minvalue', $min, ParameterType::INTEGER)
-                ->setParameter('maxvalue', $max,ParameterType::INTEGER)
+                ->setParameter('minvalue', $params['minprice'], ParameterType::INTEGER)
+                ->setParameter('maxvalue', $params['maxprice'],ParameterType::INTEGER)
             ;
         }
 

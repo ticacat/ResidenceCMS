@@ -27,7 +27,9 @@ final class RequestToArrayTransformer
         {
             $params['show_slider_homepage'] = 1;
         }
-        $params['range_price']  = $request->query->get('range_price','0-10000000');
+
+        $params['minprice']  = $request->query->get('minprice','0');
+        $params['maxprice']  = $request->query->get('maxprice','10000000');
 
 
 
